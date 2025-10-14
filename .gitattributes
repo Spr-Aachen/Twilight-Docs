@@ -1,0 +1,23 @@
+# Enable all line ending conversions
+*               text=auto
+
+# These files are text and should be normalized (convert crlf => lf)
+.gitattributes  text
+**/*.md         text
+**/*.txt        text
+**/*.ini        text
+**/*.json       text
+**/*.xml        text
+
+# Images should be treated as binary (binary is a macro for -text -diff)
+**/*.svg        binary
+**/*.ico        binary
+**/*.png        binary
+**/*.jpg        binary
+**/*.jpeg       binary
+**/*.webp       binary
+**/*.gif        binary
+
+# Make GitHub language detection more accurate
+**/*.ts         -language=TypeScript
+**/*.vue        -language=Vue
