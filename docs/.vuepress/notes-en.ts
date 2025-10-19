@@ -50,6 +50,11 @@ const NoteEn = defineNoteConfig({
                     icon: 'ri:global-line'
                 },
                 {
+                    text: "CMS Config",
+                    link: "cms/",
+                    icon: "ri:shield-user-line"
+                },
+                {
                     text: 'Footer Config',
                     link: 'footer/',
                     icon: 'ri:layout-bottom-line'

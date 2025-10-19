@@ -64,6 +64,11 @@ const Note = defineNoteConfig({
                     icon: "ri:global-line"
                 },
                 {
+                    text: "后台配置",
+                    link: "cms/",
+                    icon: "ri:shield-user-line"
+                },
+                {
                     text: "页脚配置",
                     link: "footer/",
                     icon: "ri:layout-bottom-line",
