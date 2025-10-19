@@ -4,6 +4,8 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/core/
 ---
 
+站点配置
+
 
 ## 文件位置
 
@@ -32,10 +34,10 @@ export const siteConfig: SiteConfig = {
 ## 主题设置
 
 ```typescript
-	themeColor: {
-		hue: 255, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
-		fixed: false, // 对访问者隐藏主题色选择器
-	},
+    themeColor: {
+        hue: 255, // 主题色的默认色相，范围从 0 到 360。例如：红色：0，青色：200，蓝绿色：250，粉色：345
+        fixed: false, // 对访问者隐藏主题色选择器
+    },
     defaultTheme: "dark", // "system" 跟随系统， "light" 浅色， "dark" 深色
 ```
 
@@ -49,53 +51,52 @@ export const siteConfig: SiteConfig = {
 横幅设置控制主页顶部的横幅显示：
 
 ```typescript
-  banner: {
-    enable: true,  // 是否启用横幅
-    src: {         // 横幅图片路径
-      desktop: [   // 桌面端图片数组
-        "assets/desktop-banner/1.webp",
-        "assets/desktop-banner/2.webp",
-        // 支持多张图片，自动启用轮播
-      ],
-      mobile: [    // 移动端图片数组
-        "assets/mobile-banner/1.webp",
-        "assets/mobile-banner/2.webp",
-        // 移动端专用图片
-      ],
+    banner: {
+        enable: true,  // 是否启用横幅
+        src: {         // 横幅图片路径
+            desktop: [   // 桌面端图片数组
+                "assets/desktop-banner/1.webp",
+                "assets/desktop-banner/2.webp",
+                // 支持多张图片，自动启用轮播
+            ],
+            mobile: [    // 移动端图片数组
+                "assets/mobile-banner/1.webp",
+                "assets/mobile-banner/2.webp",
+                // 移动端专用图片
+            ],
+        },
+        position: "center", // 图片对齐方式，支持 'top', 'center', 'bottom'
+        
+        carousel: {
+            enable: true,    // 启用轮播功能（多图片时）
+            interval: 1,     // 轮播间隔时间（秒）
+        },
+        
+        homeText: {
+            enable: true,    // 在首页显示自定义文本
+            title: "Twilight", // 首页横幅主标题
+            subtitle: [      // 副标题数组，支持多个文本
+                "Carousel Text1",
+                "Carousel Text2",
+            ],
+            typewriter: {
+                enable: true,     // 启用打字机效果
+                speed: 100,       // 打字速度（毫秒）
+                deleteSpeed: 50,  // 删除速度（毫秒）
+                pauseTime: 2000,  // 完整显示后的暂停时间（毫秒）
+            },
+        },
+        
+        credit: {
+            enable: false,    // 显示横幅图片来源文本
+            text: "Describe", // 来源文本
+            url: "",          // 可选：原作品或作者页面链接
+        },
     },
-    position: "center", // 图片对齐方式，支持 'top', 'center', 'bottom'
-    
-    carousel: {
-      enable: true,    // 启用轮播功能（多图片时）
-      interval: 1,     // 轮播间隔时间（秒）
-    },
-    
-    homeText: {
-      enable: true,    // 在首页显示自定义文本
-      title: "Twilight", // 首页横幅主标题
-      subtitle: [      // 副标题数组，支持多个文本
-        "One demo website",
-        "Carousel Text1",
-        "Carousel Text2",
-      ],
-      typewriter: {
-        enable: true,     // 启用打字机效果
-        speed: 100,       // 打字速度（毫秒）
-        deleteSpeed: 50,  // 删除速度（毫秒）
-        pauseTime: 2000,  // 完整显示后的暂停时间（毫秒）
-      },
-    },
-    
-    credit: {
-      enable: false,    // 显示横幅图片来源文本
-      text: "Describe", // 来源文本
-      url: "",          // 可选：原作品或作者页面链接
-    },
-  },
 
-navbar: {
-		transparentMode: "semifull", // 导航栏透明模式："semi" 半透明加圆角，"full" 完全透明，"semifull" 动态透明
-	},
+    navbar: {
+        transparentMode: "semifull", // 导航栏透明模式："semi" 半透明加圆角，"full" 完全透明，"semifull" 动态透明
+    },
 ```
 
 ### 横幅配置详解
@@ -109,10 +110,10 @@ navbar: {
 ## 目录设置
 
 ```typescript
-  toc: {
-    enable: true, // 是否启用目录功能
-    depth: 3,     // 目录深度，1-6，1表示只显示h1标题
-  },
+    toc: {
+        enable: true, // 是否启用目录功能
+        depth: 3,     // 目录深度，1-6，1表示只显示h1标题
+    },
 ```
 
 - `enable`：设置为 `false` 可禁用文章目录功能
@@ -145,36 +146,36 @@ navbar: {
 **示例：**
 ```typescript
 export const navBarConfig: NavBarConfig = {
-	links: [
-		LinkPreset.Home,
-		LinkPreset.Archive,
-		{
-			name: "Links", // 一级菜单名称
-			url: "/links/", // 一级菜单链接 (可选，如果只有子菜单，可以为空)
-			children: [
-				{
-					name: "GitHub", // 二级菜单名称
-					url: "https://github.com/Spr-Aachen", // 二级菜单链接
-					external: true, // 外部链接
-				},
-				{
-					name: "Bilibili",
-					url: "https://space.bilibili.com/359461611",
-					external: true,
-				},
-			],
-		},
-		{
-			name: "My",
-			url: "/content/",
-			children: [
-				LinkPreset.About,
-				LinkPreset.Friends,
-				LinkPreset.Anime,
-				LinkPreset.Diary,
-			],
-		},
-	],
+    links: [
+        LinkPreset.Home,
+        LinkPreset.Archive,
+        {
+            name: "Links", // 一级菜单名称
+            url: "/links/", // 一级菜单链接 (可选，如果只有子菜单，可以为空)
+            children: [
+                {
+                    name: "GitHub", // 二级菜单名称
+                    url: "https://github.com/Spr-Aachen", // 二级菜单链接
+                    external: true, // 外部链接
+                },
+                {
+                    name: "Bilibili",
+                    url: "https://space.bilibili.com/359461611",
+                    external: true,
+                },
+            ],
+        },
+        {
+            name: "My",
+            url: "/content/",
+            children: [
+                LinkPreset.About,
+                LinkPreset.Friends,
+                LinkPreset.Anime,
+                LinkPreset.Diary,
+            ],
+        },
+    ],
 };
 ```
 
@@ -238,16 +239,16 @@ export const commentConfig: CommentConfig = {
 
 ```typescript
 export const announcementConfig: AnnouncementConfig = {
-	enable: true, // 启用公告功能
-	title: "Announcement", // 公告标题
-	content: "Welcome to my blog! This is a sample announcement.", // 公告内容
-	closable: true, // 允许用户关闭公告
-	link: {
-		enable: true, // 显示链接按钮
-		text: "Learn More", // 链接文本
-		url: "/about/", // 链接地址
-		external: true, // 是否显示外部链接按钮
-	},
+    enable: true, // 启用公告功能
+    title: "Announcement", // 公告标题
+    content: "Welcome to my blog! This is a sample announcement.", // 公告内容
+    closable: true, // 允许用户关闭公告
+    link: {
+        enable: true, // 显示链接按钮
+        text: "Learn More", // 链接文本
+        url: "/about/", // 链接地址
+        external: true, // 是否显示外部链接按钮
+    },
 };
 ```
 
@@ -333,69 +334,50 @@ generateOgImages: true, // 启用生成OpenGraph图片功能
 
 ### 示例：
 
-```typescript:/c:/Users/Administrator/Desktop/mizuki/src/config.ts
+```typescript
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
-	enable: true,
-	position: "left",
-	components: [
-		{
-			type: "profile",
-			enable: true,
-			order: 1,
-			position: "top",
-			class: "onload-animation",
-			animationDelay: 0,
-		},
-		{
-			type: "announcement",
-			enable: true,
-			order: 2,
-			position: "top",
-			class: "onload-animation",
-			animationDelay: 50,
-		},
-		{
-			type: "categories",
-			enable: true,
-			order: 3,
-			position: "sticky",
-			class: "onload-animation",
-			animationDelay: 150,
-			responsive: {
-				collapseThreshold: 5,
-			},
-		},
-		{
-			type: "tags",
-			enable: true,
-			order: 4,
-			position: "sticky",
-			class: "onload-animation",
-			animationDelay: 200,
-			responsive: {
-				collapseThreshold: 20,
-			},
-		},
-	],
+    enable: true,
+    position: "left",
+    components: [
+        {
+            type: "profile",
+            enable: true,
+            order: 1,
+            position: "top",
+            class: "onload-animation",
+            animationDelay: 0,
+        },
+        {
+            type: "categories",
+            enable: true,
+            order: 2,
+            position: "sticky",
+            class: "onload-animation",
+            animationDelay: 150,
+            responsive: {
+                collapseThreshold: 5,
+            },
+        },
+    ],
 
-	defaultAnimation: {
-		enable: true,
-		baseDelay: 0,
-		increment: 50,
-	},
+    defaultAnimation: {
+        enable: true,
+        baseDelay: 0,
+        increment: 50,
+    },
 
-	responsive: {
-		breakpoints: {
-			mobile: 768,
-			tablet: 1024,
-			desktop: 1280,
-		},
-		layout: {
-			mobile: "sidebar",
-			tablet: "sidebar",
-			desktop: "sidebar",
-		},
-	},
+    responsive: {
+        breakpoints: {
+            mobile: 768,
+            tablet: 1024,
+            desktop: 1280,
+        },
+        layout: {
+            mobile: "sidebar",
+            tablet: "sidebar",
+            desktop: "sidebar",
+        },
+    },
 };
 ```
 
@@ -404,30 +386,30 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 
 ```typescript
 export const particleConfig: ParticleConfig = {
-	enable: true, // 是否启动粒子特效
-	particleNum: 12, // 粒子数量
-	limitTimes: -1, // 粒子越界限制次数，-1为无限循环
-	size: {
-		min: 0.3, // 粒子最小尺寸倍数
-		max: 0.9, // 粒子最大尺寸倍数
-	},
-	opacity: {
-		min: 0.3, // 粒子最小不透明度
-		max: 0.9, // 粒子最大不透明度
-	},
-	speed: {
-		horizontal: {
-			min: -0.9, // 水平移动速度最小值
-			max: 0.9, // 水平移动速度最大值
-		},
-		vertical: {
-			min: 0.15, // 垂直移动速度最小值
-			max: 0.3, // 垂直移动速度最大值
-		},
-		rotation: 0.12, // 旋转速度
-		fadeSpeed: 0.12, // 消失速度，不应大于最小不透明度
-	},
-	zIndex: 100, // 层级，确保粒子在合适的层级显示
+    enable: true, // 是否启动粒子特效
+    particleNum: 12, // 粒子数量
+    limitTimes: -1, // 粒子越界限制次数，-1为无限循环
+    size: {
+        min: 0.3, // 粒子最小尺寸倍数
+        max: 0.9, // 粒子最大尺寸倍数
+    },
+    opacity: {
+        min: 0.3, // 粒子最小不透明度
+        max: 0.9, // 粒子最大不透明度
+    },
+    speed: {
+        horizontal: {
+            min: -0.9, // 水平移动速度最小值
+            max: 0.9, // 水平移动速度最大值
+        },
+        vertical: {
+            min: 0.15, // 垂直移动速度最小值
+            max: 0.3, // 垂直移动速度最大值
+        },
+        rotation: 0.12, // 旋转速度
+        fadeSpeed: 0.12, // 消失速度，不应大于最小不透明度
+    },
+    zIndex: 100, // 层级，确保粒子在合适的层级显示
 };
 ```
 
@@ -436,27 +418,27 @@ export const particleConfig: ParticleConfig = {
 
 ```typescript
 export const pioConfig: import("./types/config").PioConfig = {
-	enable: true, // 启用看板娘
-	models: ["/pio/models/pio/model.json"], // 默认模型路径
-	position: "left", // 默认位置在右侧
-	width: 280, // 默认宽度
-	height: 250, // 默认高度
-	mode: "draggable", // 默认为可拖拽模式
-	hiddenOnMobile: true, // 默认在移动设备上隐藏
-	dialog: {
-		welcome: "Welcome！", // 欢迎词
-		touch: [
-			"你在干什么？",
-			"不可以这样欺负我啦！",
-		], // 触摸提示
-		home: "点击这里回到首页！", // 首页提示
-		skin: [
-			"想看看我的新衣服吗？",
-			"新衣服真漂亮~"
-		], // 换装提示
-		close: "下次再见吧~", // 关闭提示
-		link: "", // 关于链接
-	},
+    enable: true, // 启用看板娘
+    models: ["/pio/models/pio/model.json"], // 默认模型路径
+    position: "left", // 默认位置在右侧
+    width: 280, // 默认宽度
+    height: 250, // 默认高度
+    mode: "draggable", // 默认为可拖拽模式
+    hiddenOnMobile: true, // 默认在移动设备上隐藏
+    dialog: {
+        welcome: "Welcome！", // 欢迎词
+        touch: [
+            "你在干什么？",
+            "不可以这样欺负我啦！",
+        ], // 触摸提示
+        home: "点击这里回到首页！", // 首页提示
+        skin: [
+            "想看看我的新衣服吗？",
+            "新衣服真漂亮~"
+        ], // 换装提示
+        close: "下次再见吧~", // 关闭提示
+        link: "", // 关于链接
+    },
 };
 ```
 
@@ -465,9 +447,9 @@ export const pioConfig: import("./types/config").PioConfig = {
 
 ```typescript
 export const umamiConfig = {
-	enabled: false,                     // 启用Umami统计
-	apiKey: "api_XXXXXXXXXX",          // API密钥
-	baseUrl: "https://api.umami.is",   // API地址
-	scripts: `<script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>`.trim(), // 统计脚本
+    enabled: false,                     // 启用Umami统计
+    apiKey: "api_XXXXXXXXXX",          // API密钥
+    baseUrl: "https://api.umami.is",   // API地址
+    scripts: `<script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>`.trim(), // 统计脚本
 };
 ```

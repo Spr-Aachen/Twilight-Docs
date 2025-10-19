@@ -84,6 +84,11 @@ const Note = defineNoteConfig({
                     icon: "ri:links-line",
                 },
                 {
+                    text: "数据配置",
+                    link: "data/",
+                    icon: "ri:numbers-line"
+                },
+                {
                     text: "番剧配置",
                     link: "anime/",
                     icon: "ri:tv-line"
@@ -117,9 +122,9 @@ const Note = defineNoteConfig({
                     icon: "ri:folder-line"
                 },
                 {
-                    text: "图表",
-                    link: "chart/",
-                    icon: "ri:pie-chart-line"
+                    text: "后台",
+                    link: "cms/",
+                    icon: "ri:shield-user-line"
                 },
             ],
         },
@@ -180,20 +185,6 @@ const Note = defineNoteConfig({
                     icon: "ri:download-cloud-line",
                 },
             ],
-        },
-
-        {
-            text: '特色功能',
-            icon: 'ri:star-line',
-            prefix: '/feature/', // 使用 prefix 拼接，可以简写 下面的 items 中的 link 为相对路径
-            collapsed: true, // 是否默认折叠
-            items: [
-                {
-                    text: '自定义页面',
-                    link: 'customization/',
-                    icon: 'ri:wrench-line'
-                },
-            ]
         },
     ],
     // 根据文件结构自动生成侧边栏

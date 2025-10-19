@@ -4,20 +4,17 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/footer/
 ---
 
+网站页脚内容配置，支持注入自定义HTML内容如备案号、版权信息等
 
-## 文件位置
+
+## 文件结构
 
 ```
-src/FooterConfig.html
+项目根目录/
+└── src/
+    ├── config.ts           # 开关设置
+	└── FooterConfig.html     # 内容设置
 ```
-
-
-## 配置结构
-
-页脚配置分为两个部分：
-
-1. **HTML内容文件**：`src/FooterConfig.html`
-2. **配置开关**：`src/config.ts` 中的 `footerConfig`
 
 
 ## 基础配置

@@ -1,23 +1,22 @@
 ---
-title: 页脚配置
+title: 音乐播放器配置
 createTime: 2025/10/10 10:10:10
 permalink: /config/music/
 ---
 
+音乐播放器配置，支持本地音乐和在线音乐两种模式
 
-## 文件位置
+
+## 文件结构
 
 ```
-rc/components/widget/MusicPlayer.svelte
+项目根目录/
+└── src/
+	├── components/
+	│   └── widget/
+	│   	└── MusicPlayer.svelte		# 内容设置
+	└── config.ts           			# 开关设置
 ```
-
-
-## 配置结构
-
-页脚配置分为两个部分：
-
-1. **音乐内容文件**：`src/components/widget/MusicPlayer.svelte`
-2. **配置开关**：`src/config.ts` 中的 `musicPlayerConfig`
 
 
 ## 基础配置

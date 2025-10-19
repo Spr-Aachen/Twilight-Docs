@@ -4,7 +4,7 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/cms/
 ---
 
-本项目成功集成 Decap CMS 后台管理系统，支持通过 Web 界面编辑和发布博客文章、项目、技能、时间线、动漫等数据内容。
+后台管理系统配置
 
 
 ## 文件结构
@@ -35,6 +35,18 @@ backend:
 ```
 
 ### 2. 创建 GitHub OAuth 应用
+
+0. 编辑 `astro.config.mjs` 文件，将`oauthDisabled`设置为`false`：
+```javascript
+export default defineConfig({
+	integrations: [
+		decapCmsOauth({
+			decapCMSVersion: "3.3.3",
+			oauthDisabled: false, // Disable it to use oauth, requires .env configuration
+		}),
+   ],
+})
+```
 
 1. 访问 [GitHub Developer Settings](https://github.com/settings/developers)
 2. 点击 `New OAuth App`

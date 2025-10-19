@@ -4,6 +4,8 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/navBar/
 ---
 
+网站顶部导航栏的链接结构配置，支持多级菜单和自定义链接
+
 
 ## 文件位置
 
@@ -16,19 +18,19 @@ src/config/navBarConfig.ts
 
 ```typescript
 export const navBarConfig: NavBarConfig = {
-  links: [
-    LinkPreset.Home,      // 首页链接
-    LinkPreset.Archive,   // 归档页面链接
-    LinkPreset.About,     // 关于页面链接
-    LinkPreset.Friends,   // 朋友页面链接
-    LinkPreset.Anime,     // 番剧页面链接
-    LinkPreset.Diary,     // 日记页面链接
-    {
-      name: "GitHub",    // 自定义链接名称
-      url: "https://github.com/Spr-Aachen",
-      external: true,     // 是否为外部链接
-    },
-  ],
+    links: [
+        LinkPreset.Home,      // 首页链接
+        LinkPreset.Archive,   // 归档页面链接
+        LinkPreset.About,     // 关于页面链接
+        LinkPreset.Friends,   // 朋友页面链接
+        LinkPreset.Anime,     // 番剧页面链接
+        LinkPreset.Diary,     // 日记页面链接
+        {
+        name: "GitHub",    // 自定义链接名称
+        url: "https://github.com/Spr-Aachen",
+        external: true,     // 是否为外部链接
+        },
+    ],
 };
 ```
 
@@ -63,15 +65,15 @@ Twilight 提供了多个预设链接，可以直接使用：
 
 ```typescript
 {
-  links: [
-    LinkPreset.Home,
-    LinkPreset.Archive,
-    // ... 其他链接
-    {
-      name: "Twitter",
-      url: "https://twitter.com/yourusername",
-      external: true,
-    },
-  ],
+    links: [
+        LinkPreset.Home,
+        LinkPreset.Archive,
+        // ... 其他链接
+        {
+        name: "Twitter",
+        url: "https://twitter.com/yourusername",
+        external: true,
+        },
+    ],
 }
 ```

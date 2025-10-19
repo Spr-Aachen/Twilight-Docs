@@ -36,7 +36,6 @@ categories:
 ### Twilight 格式示例：
 ```yaml
 ---
-
 title: Markdown Tutorial
 published: 2025-01-20
 pinned: true
@@ -47,7 +46,6 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-
 ---
 
 # 我的 Gridea 文章

@@ -70,9 +70,14 @@ const NoteEn = defineNoteConfig({
                     icon: 'ri:links-line'
                 },
                 {
-                    text: 'Anime Config',
-                    link: 'anime/',
-                    icon: 'ri:tv-line'
+                    text: 'Data Config',
+                    link: 'data/',
+                    icon: 'ri:numbers-line'
+                },
+                {
+                    text: "Anime Config",
+                    link: "anime/",
+                    icon: "ri:tv-line"
                 },
                 {
                     text: 'Music Config',
@@ -103,9 +108,9 @@ const NoteEn = defineNoteConfig({
                     icon: 'ri:folder-line'
                 },
                 {
-                    text: 'Charts',
-                    link: 'chart/',
-                    icon: 'ri:pie-chart-line'
+                    text: "CMS",
+                    link: "cms/",
+                    icon: "ri:shield-user-line"
                 },
             ]
         },
@@ -166,19 +171,6 @@ const NoteEn = defineNoteConfig({
                     icon: 'ri:download-cloud-line'
                 },
             ]
-        },
-        {
-            text: 'Special Features',
-            icon: 'ri:star-line',
-            prefix: '/en/feature/',
-            collapsed: true,
-            items: [
-                {
-                    text: 'Page Customization',
-                    link: 'customization/',
-                    icon: 'ri:wrench-line'
-                },
-            ] 
         },
     ],
 });
