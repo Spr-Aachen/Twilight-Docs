@@ -17,12 +17,26 @@ src/config.ts
 ## 基础设置
 
 ```typescript
-const SITE_LANG = "zh_CN"; // 语言代码，例如：'en', 'zh_CN', 'ja' 等。
+// 自动检测浏览器语言（服务端渲染时默认为 'en'）
+const SITE_LANG = detectBrowserLanguage("en");
+// 如果需要强制使用特定语言，可以取消注释下面一行并设置语言代码
+// const SITE_LANG = "zh"; // 强制使用的语言代码，'zh', 'en', 'ja' 等
+
 
 export const siteConfig: SiteConfig = {
-    title: "Twilight",        // 网站标题
-    subtitle: "A blog demo",  // 网站副标题
-    lang: SITE_LANG,         // 不需要配置，会根据 SITE_LANG 自动设置
+	title: "Twilight",
+	subtitle: "Blog Template",
+
+	lang: SITE_LANG, // 自动检测的浏览器语言
+	translate: {
+		enable: true, // 启用翻译功能
+		service: "client.edge", // 使用 Edge 浏览器翻译服务
+		defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // 根据检测到的语言自动设置默认翻译语言
+		showSelectTag: false, // 不显示默认语言选择下拉菜单，使用自定义按钮
+		autoDiscriminate: true, // 自动检测用户语言
+		ignoreClasses: ["ignore", "banner-title", "banner-subtitle"], // 翻译时忽略的 CSS 类名
+		ignoreTags: ["script", "style", "code", "pre"], // 翻译时忽略的 HTML 标签
+	},
 }
 ```
 
