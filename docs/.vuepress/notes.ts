@@ -69,6 +69,11 @@ const Note = defineNoteConfig({
                     icon: "ri:shield-user-line"
                 },
                 {
+                    text: "统计配置",
+                    link: "analytics/",
+                    icon: "ri:bar-chart-2-line"
+                },
+                {
                     text: "页脚配置",
                     link: "footer/",
                     icon: "ri:layout-bottom-line",

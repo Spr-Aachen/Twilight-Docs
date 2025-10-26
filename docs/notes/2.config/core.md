@@ -477,15 +477,3 @@ export const pioConfig: import("./types/config").PioConfig = {
     },
 };
 ```
-
-
-## 统计配置
-
-```typescript
-export const umamiConfig = {
-    enabled: false,                     // 启用Umami统计
-    apiKey: "api_XXXXXXXXXX",          // API密钥
-    baseUrl: "https://api.umami.is",   // API地址
-    scripts: `<script defer src="XXXX.XXX" data-website-id="ABCD1234"></script>`.trim(), // 统计脚本
-};
-```
