@@ -17,14 +17,14 @@ config:
         -
           theme: brand
           text: 快速开始 →
-          link: /guide/intro/
+          link: guide/intro/
         -
           theme: alt
           text: 在Github上查看 →
           link: https://github.com/Spr-Aachen/Twilight
-  - 
-   type: features
-   features:
+  -
+    type: features
+    features:
       -
         title: 响应式布局
         icon: 💻
@@ -40,7 +40,7 @@ config:
       -
         title: 多语言
         icon: ⚖
-        details: 内置了 中文/英文/日语等语言支持
+        details: 内置了 中文/英文等语言支持
       -
         title: 双色主题
         icon: 👨‍💻
@@ -52,11 +52,11 @@ config:
       -
         title: 搜索、评论
         icon: 🔍
-        details: 内置Twikoo评论系统,快速接入
+        details: 内置 Twikoo 评论系统，快速接入
       -
         title: 安全
         icon: 🔒
-        details: 网站完全静态渲染,安全度高
+        details: 网站完全静态渲染，安全度高
       -
         title: Markdown 增强
         icon: 📝

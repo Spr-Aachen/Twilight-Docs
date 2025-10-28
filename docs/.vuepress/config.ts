@@ -26,6 +26,11 @@ export default defineUserConfig({
       title: 'Twilight博客主题官方文档',
       description: '一个基于Astro的博客模板'
     },
+    '/en/': {
+      lang: 'en-US',
+      title: 'Twilight Blog Theme Documentation',
+      description: 'A blog template based on Astro'
+    },
   },
 
   head: [
@@ -38,7 +43,7 @@ export default defineUserConfig({
 
   theme: plumeTheme({
     /* 添加您的部署域名, 有助于 SEO, 生成 sitemap */
-    hostname: 'https://docs-twilight.spr-aachen.com',
+    hostname: 'https://docs.twilight.spr-aachen.com',
 
     /* 文档仓库配置，用于 editLink */
     // docsRepo: '',
@@ -55,6 +60,9 @@ export default defineUserConfig({
     locales: {
       '/': {
         selectLanguageName: '简体中文',
+      },
+      '/en/': {
+        selectLanguageName: 'English',
       },
     },
 

@@ -11,10 +11,10 @@
  */
 
 import { defineThemeConfig } from 'vuepress-theme-plume'
-import navbar from './navbar'
-import navbarEn from './navbar-en'
-import notes from './notes'
-import notesEn from './notes-en'
+import navbarZH from './navbar-cn'
+import navbarEN from './navbar-en'
+import notesZH from './notes-cn'
+import notesEN from './notes-en'
 
 /**
  * @see https://theme-plume.vuejs.press/config/basic/
@@ -23,12 +23,12 @@ export default defineThemeConfig({
   // 多语言配置 - 导航栏和笔记
   locales: {
     '/': {
-      navbar,
-      notes,
+      navbar: navbarZH,
+      notes: notesZH,
     },
     '/en/': {
-      navbar: navbarEn,
-      notes: notesEn,
+      navbar: navbarEN,
+      notes: notesEN,
     },
   },
 

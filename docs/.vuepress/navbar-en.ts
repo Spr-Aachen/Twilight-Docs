@@ -9,5 +9,8 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
   { text: 'Home', link: '/en/' },
-  { text: 'Guide', link: '/en/guide/get-started/' }
+  { text: 'Guide', link: '/en/guide/get-started/' },
+  { text: 'Configuration', link: '/en/config/core/' },
+  { text: 'Writing', link: '/en/press/file/' },
+  { text: 'Migration', link: '/en/transfer/markdown-import/' }
 ])

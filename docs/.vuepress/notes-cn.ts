@@ -21,8 +21,8 @@
  */
 import { defineNoteConfig, defineNotesConfig } from "vuepress-theme-plume";
 
-const Note = defineNoteConfig({
-    dir: "notes",
+const NoteZH = defineNoteConfig({
+    dir: "zh",
     // `dir` 所指向的目录中的所有 markdown 文件，其 permalink 需要以 `link` 配置作为前缀
     // 如果 前缀不一致，则无法生成侧边栏。
     // 所以请确保  markdown 文件的 permalink 都以 `link` 开头
@@ -202,7 +202,7 @@ const Note = defineNoteConfig({
  * （Note 为参考示例，如果不需要它，请删除）
  */
 export default defineNotesConfig({
-    dir: "notes",
+    dir: "zh",
     link: "/",
-    notes: [Note],
+    notes: [NoteZH],
 });
