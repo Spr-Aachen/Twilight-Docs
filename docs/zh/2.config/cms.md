@@ -19,22 +19,9 @@ permalink: /config/cms/
 ```
 
 
-## 配置步骤
+## 
 
-### 1. 更新配置文件
-
-编辑 `public/admin/config.yml` 文件，更新以下配置：
-```yaml
-backend:
-  name: github
-  branch: main
-  repo: your-username/your-repo-name  # 替换为您的 GitHub 仓库
-  site_domain: your-domain.com  # 替换为您的域名
-  base_url: https://your-domain.com  # 替换为您的 URL
-  auth_endpoint: oauth
-```
-
-### 2. 创建 GitHub OAuth 应用
+### 1. 创建 GitHub OAuth 应用
 
 0. 编辑 `astro.config.mjs` 文件，将`oauthDisabled`设置为`false`：
 ```javascript
@@ -60,6 +47,19 @@ export default defineConfig({
 ```env
 OAUTH_GITHUB_CLIENT_ID=您的 github client id
 OAUTH_GITHUB_CLIENT_SECRET=您的 github client secret
+```
+
+### 2. 更新配置文件
+
+编辑 `public/admin/config.yml` 文件，更新以下配置：
+```yaml
+backend:
+  name: github
+  branch: main
+  repo: your-username/your-repo-name  # 替换为您的 GitHub 仓库
+  site_domain: your-domain.com  # 替换为您的域名
+  base_url: https://your-domain.com  # 替换为您的 URL
+  auth_endpoint: oauth
 ```
 
 ### 3. 部署和访问
