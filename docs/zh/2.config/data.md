@@ -26,7 +26,7 @@ permalink: /config/data/
 ```json
 {
   "title": "Twilight Blog Template",
-  "description": "A blog theme built with Astro framework.",
+  "description": "A CMS integrated blog theme built with Astro framework.",
   "image": "",
   "category": "website",
   "techStack": [

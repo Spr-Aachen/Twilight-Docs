@@ -25,7 +25,7 @@ Create a JSON file inside `src/data/projects` with the following shape:
 ```json
 {
   "title": "Twilight Blog Template",
-  "description": "A blog theme built with the Astro framework.",
+  "description": "A CMS integrated blog theme built with Astro framework.",
   "image": "",
   "category": "website",
   "techStack": [
