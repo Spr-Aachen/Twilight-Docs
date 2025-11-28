@@ -346,15 +346,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
     },
     // 响应式布局配置
     responsive: {
-        // 断点配置
-        breakpoints: {
-            // 移动端断点 (像素值)
-            mobile: 768, // 屏幕宽度小于768px
-            // 平板端断点 (像素值)
-            tablet: 1024, // 屏幕宽度小于1024px
-            // 桌面端断点 (像素值)
-            desktop: 1280, // 屏幕宽度小于1280px
-        },
         // 不同设备的布局模式 ("hidden" 不显示侧边栏 | "drawer" 抽屉模式 | "sidebar" 显示侧边栏)
         layout: {
             // 移动端
@@ -368,11 +359,10 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 ```
 
-- **`enable`**:  是否启用侧边栏功能。设置为 `true` 启用，`false` 禁用。
-- **`position`**: 侧边栏在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
 - **`components`**:   一个数组，定义了侧边栏中包含的各个组件及其配置
         - **`type`**:  组件类型，例如：`"profile"`（用户资料）、`"announcement"`（公告）、`"categories"`（分类）、`"tags"`（标签）。
         - **`enable`**:  是否启用该组件。设置为 `true` 启用，`false` 禁用。
+        - **`side`**: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
         - **`order`**:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
         - **`position`**:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
         - **`class`**:  应用于组件的 CSS 类名，可用于自定义样式或动画。
@@ -383,15 +373,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
     - **`enable`**: 是否启用侧边栏组件的默认动画效果。
     - **`baseDelay`**:  动画的基础延迟时间（毫秒）。
     - **`increment`**:  每个组件依次增加的动画延迟时间（毫秒）。例如，第一个组件延迟 `baseDelay`，第二个组件延迟 `baseDelay + increment`，以此类推。
-- **`responsive`**: 响应式布局配置
-    - **`breakpoints`**: 定义不同设备的屏幕宽度断点（像素值）：
-        - **`mobile`**: 移动设备断点（例如：`768`）。
-        - **`tablet`**: 平板设备断点（例如：`1024`）。
-        - **`desktop`**: 桌面设备断点（例如：`1280`）。
-    - **`layout`**: 定义在不同设备断点下的侧边栏布局模式：
-        - **`mobile`**: 移动设备下的布局模式。可选值：`"hidden"`（不显示侧边栏）或 `"sidebar"`（显示侧边栏，通常为抽屉模式）。
-        - **`tablet`**: 平板设备下的布局模式。可选值：`"hidden"` 或 `"sidebar"`。
-        - **`desktop`**: 桌面设备下的布局模式。可选值：`"hidden"` 或 `"sidebar"`。
 
 
 ## 公告功能配置说明
