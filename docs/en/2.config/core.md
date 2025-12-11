@@ -440,6 +440,20 @@ export const postConfig: PostConfig = {
 - Comment system configuration controls the comment section at the bottom of posts; you need to create an environment in [Twikoo](https://twikoo.js.org/) and obtain an environment ID first
 
 
+## Footer Configuration
+
+Configure footer
+
+```typescript
+export const footerConfig: FooterConfig = {
+    // Enable footer HTML injection
+    enable: false,
+    // Customize HTML content
+    customHtml: "",
+};
+```
+
+
 ## Particle Effect Configuration
 
 Configure particle effects such as visibility, quantity, movement speed, and more.

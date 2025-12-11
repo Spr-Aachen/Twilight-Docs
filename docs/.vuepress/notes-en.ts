@@ -63,11 +63,6 @@ const NoteEN = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: 'Footer Config',
-                    link: 'footer/',
-                    icon: 'ri:layout-bottom-line'
-                },
-                {
                     text: 'Navbar Config',
                     link: 'navbar/',
                     icon: 'ri:menu-line'

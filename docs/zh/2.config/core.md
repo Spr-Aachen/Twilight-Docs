@@ -462,6 +462,20 @@ export const postConfig: PostConfig = {
 - 评论系统配置控制文章底部的评论系统，需要先在 [Twikoo](https://twikoo.js.org/) 上创建环境并获取环境 ID
 
 
+## 启用页脚功能
+
+配置网站页脚
+
+```typescript
+export const footerConfig: FooterConfig = {
+    // 启用 Footer HTML 注入功能
+    enable: false,
+    // 自定义 HTML 内容，用于添加备案号等信息
+    customHtml: "",
+};
+```
+
+
 ## 粒子特效配置
 
 配置粒子特效的显示、数量、移动速度等功能。

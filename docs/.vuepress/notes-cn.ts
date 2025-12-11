@@ -74,11 +74,6 @@ const NoteZH = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: "页脚配置",
-                    link: "footer/",
-                    icon: "ri:layout-bottom-line",
-                },
-                {
                     text: "导航栏配置",
                     link: "navBar/",
                     icon: "ri:menu-line",
