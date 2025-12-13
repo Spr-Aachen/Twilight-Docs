@@ -63,34 +63,14 @@ const NoteEN = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: 'Navbar Config',
-                    link: 'navbar/',
-                    icon: 'ri:menu-line'
-                },
-                {
-                    text: 'Friends Config',
-                    link: 'friends/',
-                    icon: 'ri:links-line'
-                },
-                {
                     text: 'Data Config',
                     link: 'data/',
                     icon: 'ri:numbers-line'
                 },
                 {
-                    text: "Anime Config",
-                    link: "anime/",
-                    icon: "ri:tv-line"
-                },
-                {
                     text: 'Music Config',
                     link: 'music/',
                     icon: 'ri:music-line'
-                },
-                {
-                    text: 'Other Config',
-                    link: 'other-config/',
-                    icon: 'ri:more-line'
                 },
             ]
         },

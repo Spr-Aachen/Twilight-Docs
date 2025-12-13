@@ -74,34 +74,14 @@ const NoteZH = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: "导航栏配置",
-                    link: "navBar/",
-                    icon: "ri:menu-line",
-                },
-                {
-                    text: "友链配置",
-                    link: "friends/",
-                    icon: "ri:links-line",
-                },
-                {
                     text: "数据配置",
                     link: "data/",
                     icon: "ri:numbers-line"
                 },
                 {
-                    text: "番剧配置",
-                    link: "anime/",
-                    icon: "ri:tv-line"
-                },
-                {
                     text: "音乐配置",
                     link: "music/",
                     icon: "ri:music-line"
-                },
-                {
-                    text: "其他配置",
-                    link: "other/",
-                    icon: "ri:more-line"
                 },
             ],
         },
