@@ -507,6 +507,51 @@ export const particleConfig: ParticleConfig = {
 ```
 
 
+## Music Player Configuration
+
+Configure music player such as default mode, Meting API, local playlist, and more.
+
+```typescript
+export const musicPlayerConfig: MusicPlayerConfig = {
+    // enable music player
+    enable: true,
+    // default mode ("meting" | "local")
+    mode: "meting",
+    // meting mode specific configuration
+    meting: {
+        // Meting API address
+        meting_api: "https://meting-api-omega.vercel.app/api",
+        // music server
+        server: "netease",
+        // playlist/song ID
+        id: "2161912966",
+        // type ("playlist" | "song")
+        type: "playlist",
+    },
+    // local mode specific configuration
+    local: {
+        // playlist
+        playlist: [
+            {
+                // order
+                id: 1,
+                // title
+                title: "深海之息",
+                // author
+                artist: "Youzee Music",
+                // cover
+                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg",
+                // path
+                url: "assets/music/url/深海之息.m4a",
+                // duration
+                duration: 146,
+            },
+        ],
+    },
+};
+```
+
+
 ## Live2D Assistant (Pio) Configuration
 
 Configure the Live2D assistant display, position, dialog, and related features.

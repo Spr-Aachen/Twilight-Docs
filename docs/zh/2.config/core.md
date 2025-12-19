@@ -529,6 +529,51 @@ export const particleConfig: ParticleConfig = {
 ```
 
 
+## 音乐配置
+
+配置音乐播放器的默认模式、Meting API、本地播放列表等功能
+
+```typescript
+export const musicPlayerConfig: MusicPlayerConfig = {
+    // 启用音乐播放器功能
+    enable: true,
+    // 默认模式 ("meting" API | "local" 本地)
+    mode: "meting",
+    // meting 模式专属配置
+    meting: {
+        // Meting API 地址
+        meting_api: "https://meting-api-omega.vercel.app/api",
+        // 音乐源
+        server: "netease",
+        // 歌单/单曲 ID
+        id: "2161912966",
+        // 类型 ("playlist" 歌单 | "song" 单曲)
+        type: "playlist",
+    },
+    // local 模式专属配置
+    local: {
+        // 播放列表
+        playlist: [
+            {
+                // 序号
+                id: 1,
+                // 标题
+                title: "深海之息",
+                // 作者
+                artist: "Youzee Music",
+                // 封面
+                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg",
+                // 路径
+                url: "assets/music/url/深海之息.m4a",
+                // 时长
+                duration: 146,
+            },
+        ],
+    },
+};
+```
+
+
 ## 看板娘配置
 
 配置看板娘的显示、位置、对话框等功能。

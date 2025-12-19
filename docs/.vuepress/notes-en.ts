@@ -67,11 +67,6 @@ const NoteEN = defineNoteConfig({
                     link: 'data/',
                     icon: 'ri:numbers-line'
                 },
-                {
-                    text: 'Music Config',
-                    link: 'music/',
-                    icon: 'ri:music-line'
-                },
             ]
         },
         {

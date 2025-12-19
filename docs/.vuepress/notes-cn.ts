@@ -78,11 +78,6 @@ const NoteZH = defineNoteConfig({
                     link: "data/",
                     icon: "ri:numbers-line"
                 },
-                {
-                    text: "音乐配置",
-                    link: "music/",
-                    icon: "ri:music-line"
-                },
             ],
         },
         {
