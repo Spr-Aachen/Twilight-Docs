@@ -16,20 +16,20 @@ import { plumeTheme } from 'vuepress-theme-plume'
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: 'Twilight博客主题官方文档',
-  description: '一个基于Astro的博客模板',
+  title: 'Twilight网站主题官方文档',
+  description: '一个基于Astro的网站模板',
 
   // 多语言配置
   locales: {
     '/': {
       lang: 'zh-CN',
-      title: 'Twilight博客主题官方文档',
-      description: '一个基于Astro的博客模板'
+      title: 'Twilight网站主题官方文档',
+      description: '一个基于Astro的网站模板'
     },
     '/en/': {
       lang: 'en-US',
-      title: 'Twilight Blog Theme Documentation',
-      description: 'A blog template based on Astro'
+      title: 'Twilight Site Theme Docs',
+      description: 'A site template based on Astro'
     },
   },
 
