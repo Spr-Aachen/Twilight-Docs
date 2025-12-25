@@ -4,7 +4,7 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/data/
 ---
 
-个人数据配置， 包含项目、技能、时间线，支持通过后台进行管理
+个人数据配置， 包含项目、技能、时间线、以及友链，支持通过后台进行管理
 
 
 ## 文件结构
@@ -25,25 +25,25 @@ permalink: /config/data/
 
 ```json
 {
-  "title": "Twilight Blog Template",
-  "description": "A CMS integrated blog theme built with Astro framework.",
-  "image": "",
-  "category": "website",
-  "techStack": [
-    "Astro",
-    "Svelte",
-    "Tailwind CSS"
-  ],
-  "status": "in-progress",
-  "liveDemo": "https://twilight.spr-aachen.com",
-  "sourceCode": "https://github.com/Spr-Aachen/Twilight",
-  "startDate": "2025-10-01",
-  "endDate": "",
-  "featured": false,
-  "tags": [
-    "Personal Project",
-    "Open Source Project"
-  ]
+    "title": "Twilight Blog Template",
+    "description": "A CMS integrated blog theme built with Astro framework.",
+    "image": "",
+    "category": "website",
+    "techStack": [
+        "Astro",
+        "Svelte",
+        "Tailwind CSS"
+    ],
+    "status": "in-progress",
+    "liveDemo": "https://twilight.spr-aachen.com",
+    "sourceCode": "https://github.com/Spr-Aachen/Twilight",
+    "startDate": "2025-10-01",
+    "endDate": "",
+    "featured": false,
+    "tags": [
+        "Personal Project",
+        "Open Source Project"
+    ]
 }
 ```
 
@@ -56,16 +56,16 @@ permalink: /config/data/
 
 ```json
 {
-  "name": "Git",
-  "description": "A distributed version control system.",
-  "icon": "logos:git-icon",
-  "category": "tools",
-  "level": "advanced",
-  "experience": {
-    "years": 3,
-    "months": 0
-  },
-  "color": "#F05032"
+    "name": "Git",
+    "description": "A distributed version control system.",
+    "icon": "logos:git-icon",
+    "category": "tools",
+    "level": "advanced",
+    "experience": {
+        "years": 3,
+        "months": 0
+    },
+    "color": "#F05032"
 }
 ```
 
@@ -78,32 +78,32 @@ permalink: /config/data/
 
 ```json
 {
-  "title": "Twilight",
-  "description": "My first open source template project, a blog template built with Astro framework.",
-  "type": "project",
-  "startDate": "2025-10-01",
-  "endDate": "",
-  "skills": [
-    "Astro",
-    "Svelte",
-    "Tailwind CSS"
-  ],
-  "achievements": [],
-  "links": [
-    {
-      "name": "GitHub Repository",
-      "url": "https://github.com/Spr-Aachen/Twilight",
-      "type": "project"
-    },
-    {
-      "name": "Online Demo",
-      "url": "https://twilight.spr-aachen.com",
-      "type": "other"
-    }
-  ],
-  "icon": "material-symbols:code",
-  "color": "#7C3AED",
-  "featured": false
+    "title": "Twilight",
+    "description": "My first open source template project, a blog template built with Astro framework.",
+    "type": "project",
+    "startDate": "2025-10-01",
+    "endDate": "",
+    "skills": [
+        "Astro",
+        "Svelte",
+        "Tailwind CSS"
+    ],
+    "achievements": [],
+    "links": [
+        {
+            "name": "GitHub Repository",
+            "url": "https://github.com/Spr-Aachen/Twilight",
+            "type": "project"
+        },
+        {
+            "name": "Online Demo",
+            "url": "https://twilight.spr-aachen.com",
+            "type": "other"
+        }
+    ],
+    "icon": "material-symbols:code",
+    "color": "#7C3AED",
+    "featured": false
 }
 ```
 
