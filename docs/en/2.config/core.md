@@ -290,18 +290,25 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
             enable: true,
             order: 1,
             position: "top",
-            class: "onload-animation",
-            animationDelay: 0,
         },
         {
             type: "categories",
             enable: true,
             order: 2,
             position: "sticky",
-            class: "onload-animation",
-            animationDelay: 150,
             responsive: {
                 collapseThreshold: 5,
+            },
+        },
+        {
+            type: "toc",
+            enable: true,
+            side: "right",
+            order: 1,
+            position: "sticky",
+            customProps: {
+                // TOC depth (1–6, 1 shows only h1, 2 shows h1 and h2, and so on)
+                depth: 3,
             },
         },
     ],
@@ -334,8 +341,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
         - **`enable`**:  Whether to enable this component. `true` to enable, `false` to disable.
         - **`order`**:  Display order of the component. Smaller numbers appear earlier in the sidebar.
         - **`position`**:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
-        - **`class`**:  CSS class name applied to the component, used for custom styles or animations.
-        - **`animationDelay`**:  Animation delay for the component (milliseconds), used to stagger animations.
         - **`responsive`**:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
             - **`collapseThreshold`**:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
 - **`defaultAnimation`**: Default animation configuration
@@ -403,13 +408,6 @@ export const postConfig: PostConfig = {
     expressiveCode: {
         // Theme
         theme: "github-dark", // Dark background
-    },
-    // Table of contents configuration
-    toc: {
-        // Enable TOC
-        enable: true,
-        // TOC depth (1–6, 1 shows only h1, 2 shows h1 and h2, and so on)
-        depth: 3,
     },
     // License configuration
     license: {

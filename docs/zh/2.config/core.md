@@ -271,26 +271,18 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
             order: 1,
             // 组件位置
             position: "top", // 固定在顶部
-            // CSS 类名，用于应用样式和动画
-            class: "onload-animation",
-            // 动画延迟时间 (毫秒) ，用于错开动画效果
-            animationDelay: 0,
         },
         {
             // 组件类型
             type: "announcement", // 公告组件
-            // 是否启用该组件 (现在通过统一配置控制)
+            // 是否启用该组件
             enable: true,
             // 组件所属侧边栏
             side: "left",
-            // 组件显示顺序
+            // 组件显示顺序 (数字越小越靠前)
             order: 2,
             // 组件位置
             position: "top", // 固定在顶部
-            // CSS 类名
-            class: "onload-animation",
-            // 动画延迟时间
-            animationDelay: 50,
         },
         {
             // 组件类型
@@ -298,15 +290,11 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
             // 是否启用该组件
             enable: true,
             // 组件所属侧边栏
-            side: "right",
-            // 组件显示顺序
+            side: "left",
+            // 组件显示顺序 (数字越小越靠前)
             order: 3,
             // 组件位置
             position: "sticky", // 粘性定位，可滚动
-            // CSS 类名
-            class: "onload-animation",
-            // 动画延迟时间
-            animationDelay: 150,
             // 响应式配置
             responsive: {
                 // 折叠阈值
@@ -319,19 +307,32 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
             // 是否启用该组件
             enable: true,
             // 组件所属侧边栏
-            side: "right",
-            // 组件显示顺序
+            side: "left",
+            // 组件显示顺序 (数字越小越靠前)
             order: 4,
             // 组件位置
             position: "sticky", // 粘性定位，可滚动
-            // CSS 类名
-            class: "onload-animation",
-            // 动画延迟时间
-            animationDelay: 250,
             // 响应式配置
             responsive: {
                 // 折叠阈值
                 collapseThreshold: 20, // 当标签数量超过20个时自动折叠
+            },
+        },
+        {
+            // 组件类型
+            type: "toc", // 目录组件
+            // 是否启用该组件
+            enable: true,
+            // 组件所属侧边栏
+            side: "right",
+            // 组件显示顺序 (数字越小越靠前)
+            order: 1,
+            // 组件位置
+            position: "sticky", // 粘性定位，可滚动
+            // 自定义属性
+            customProps: {
+                // 目录深度 (1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推)
+                depth: 3,
             },
         },
     ],
@@ -365,8 +366,6 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
         - **`side`**: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
         - **`order`**:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
         - **`position`**:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
-        - **`class`**:  应用于组件的 CSS 类名，可用于自定义样式或动画。
-        - **`animationDelay`**:  组件动画的延迟时间（毫秒）。用于错开不同组件的动画效果。
         - **`responsive`**:  针对特定组件的响应式配置。例如，`categories` 和 `tags` 组件可以配置 `collapseThreshold`：
             - **`collapseThreshold`**:  折叠阈值。当组件内的项目数量超过此值时，组件内容将自动折叠。
 - **`defaultAnimation`**: 默认动画配置
@@ -425,13 +424,6 @@ export const postConfig: PostConfig = {
     expressiveCode: {
         // 主题
         theme: "github-dark", // 深色背景
-    },
-    // 目录配置
-    toc: {
-        // 启用目录功能
-        enable: true,
-        // 目录深度 (1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推)
-        depth: 3,
     },
     // 许可证配置
     license: {
