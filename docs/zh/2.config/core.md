@@ -19,13 +19,11 @@ src/config.ts
 配置网站的全局设置，包括语言、时区、主题色、壁纸等。
 
 ```typescript
-// 自动检测浏览器语言
-const SITE_LANG = detectBrowserLanguage("en"); // 服务端渲染时默认为 'en'
-// 如果需要强制使用特定语言，可以取消注释下面一行并设置语言代码
-//const SITE_LANG = "zh"; // 强制使用的语言代码，'zh', 'en', 'ja' 等
+// 设置浏览器语言
+const SITE_LANG = "en";
 
-// 设置网站时区
-const SITE_TIMEZONE = 8; // from -12 to 12 default in UTC+8
+// 设置网站时区 [-12, 12]
+const SITE_TIMEZONE = 8; // UTC+8
 
 // 站点配置
 export const siteConfig: SiteConfig = {
@@ -43,8 +41,6 @@ export const siteConfig: SiteConfig = {
         enable: true,
         // 翻译服务
         service: "client.edge", // 使用 Edge 浏览器
-        // 默认翻译语言
-        defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // 根据检测到的语言自动设置默认翻译语言
         // 显示语言选择下拉框
         showSelectTag: false, // 使用自定义按钮
         // 自动检测用户语言
@@ -100,14 +96,9 @@ export const siteConfig: SiteConfig = {
             // 为多张图片启用轮播，否则随机显示一张图片
             enable: true,
             // 轮播间隔时间 (秒)
-            interval: 3.3,
-        },
-        // PicFlow API 配置 (fullscreen 和 banner 模式共享)
-        imageApi: {
-            // 启用图片 API
-            enable: false,
-            // API 地址，返回每行一个图片链接的文本
-            url: "http://domain.com/api_v2.php?format=text&count=4",
+            interval: 3.6,
+            // 启用 Ken Burns 效果
+            kenBurns: true,
         },
         // Banner 模式专属配置
         banner: {

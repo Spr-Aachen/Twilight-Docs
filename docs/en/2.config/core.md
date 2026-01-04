@@ -19,13 +19,11 @@ src/config.ts
 Configure global settings for the website, including language, time zone, theme color, wallpaper, and more.
 
 ```typescript
-// Automatically detect browser language
-const SITE_LANG = detectBrowserLanguage("en"); // Defaults to 'en' during server-side rendering
-// If you want to force a specific language, uncomment the line below and set the language code
-//const SITE_LANG = "zh"; // Forced language code, e.g. 'zh', 'en', 'ja'
+// Set website language code
+const SITE_LANG = "en";
 
-// Set website time zone
-const SITE_TIMEZONE = 8; // from -12 to 12, default is UTC+8
+// Set website time zone [-12, 12]
+const SITE_TIMEZONE = 8; // UTC+8
 
 // Site configuration
 export const siteConfig: SiteConfig = {
@@ -43,8 +41,6 @@ export const siteConfig: SiteConfig = {
         enable: true,
         // Translation service
         service: "client.edge", // Use Edge browser translation
-        // Default translation language
-        defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // Automatically set the default translation language based on detected language
         // Show language select dropdown
         showSelectTag: false, // Use a custom button instead
         // Automatically detect user language
@@ -100,14 +96,9 @@ export const siteConfig: SiteConfig = {
             // Enable carousel for multiple images, otherwise a random image is shown
             enable: true,
             // Carousel interval (seconds)
-            interval: 3.3,
-        },
-        // PicFlow API configuration (shared by fullscreen and banner modes)
-        imageApi: {
-            // Enable image API
-            enable: false,
-            // API endpoint returning text with one image URL per line
-            url: "http://domain.com/api_v2.php?format=text&count=4",
+            interval: 3.6,
+            // Enable Ken Burns effect
+            kenBurns: true,
         },
         // Banner mode specific configuration
         banner: {
