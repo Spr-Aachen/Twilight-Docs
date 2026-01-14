@@ -19,13 +19,11 @@ src/config.ts
 Configure global settings for the website, including language, time zone, theme color, wallpaper, and more.
 
 ```typescript
-// Automatically detect browser language
-const SITE_LANG = detectBrowserLanguage("en"); // Defaults to 'en' during server-side rendering
-// If you want to force a specific language, uncomment the line below and set the language code
-//const SITE_LANG = "zh"; // Forced language code, e.g. 'zh', 'en', 'ja'
+// Set website language code
+const SITE_LANG = "en";
 
-// Set website time zone
-const SITE_TIMEZONE = 8; // from -12 to 12, default is UTC+8
+// Set website time zone [-12, 12]
+const SITE_TIMEZONE = 8; // UTC+8
 
 // Site configuration
 export const siteConfig: SiteConfig = {
@@ -43,8 +41,6 @@ export const siteConfig: SiteConfig = {
         enable: true,
         // Translation service
         service: "client.edge", // Use Edge browser translation
-        // Default translation language
-        defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // Automatically set the default translation language based on detected language
         // Show language select dropdown
         showSelectTag: false, // Use a custom button instead
         // Automatically detect user language
@@ -58,16 +54,13 @@ export const siteConfig: SiteConfig = {
     timeZone: SITE_TIMEZONE,
     // Font configuration
     font: {
-        // zenMaruGothic font (suitable for Japanese and English, average for Chinese)
-        zenMaruGothic: {
-            // Use as global font
-            enable: true,
-        },
-        // Hanalei font (suitable for Chinese)
-        hanalei: {
-            // Use as global font
-            enable: false,
-        },
+        // Font configuration example
+        "Example - ZenMaruGothic": {
+            // Font source (font CSS link | font file path)
+            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap", // Use ZenMaruGothic CSS link
+            // Font name (font-family)
+            family: "Zen Maru Gothic",
+        }
     },
     // Theme color configuration
     themeColor: {
@@ -84,13 +77,13 @@ export const siteConfig: SiteConfig = {
         mode: "banner",
         // Image source configuration (shared by fullscreen and banner modes)
         src: {
-            // Desktop wallpaper images (supports a single image or an array; when the array length > 1, carousel is enabled automatically)
+            // Desktop wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
             desktop: [
-                "/assets/desktop-banner/desktopBanner_1.webp",
+                "/assets/images/desktopWallpaper_1.webp",
             ],
-            // Mobile wallpaper images (supports a single image or an array; when the array length > 1, carousel is enabled automatically)
+            // Mobile wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
             mobile: [
-                "/assets/mobile-banner/mobileBanner_1.webp",
+                "/assets/images/mobileWallpaper_1.webp",
             ],
         },
         // Wallpaper position ('top' | 'center' | 'bottom')
@@ -100,14 +93,9 @@ export const siteConfig: SiteConfig = {
             // Enable carousel for multiple images, otherwise a random image is shown
             enable: true,
             // Carousel interval (seconds)
-            interval: 3.3,
-        },
-        // PicFlow API configuration (shared by fullscreen and banner modes)
-        imageApi: {
-            // Enable image API
-            enable: false,
-            // API endpoint returning text with one image URL per line
-            url: "http://domain.com/api_v2.php?format=text&count=4",
+            interval: 3.6,
+            // Enable Ken Burns effect
+            kenBurns: true,
         },
         // Banner mode specific configuration
         banner: {
@@ -169,8 +157,27 @@ export const siteConfig: SiteConfig = {
             },
         },
     },
-    // OpenGraph configuration
-    generateOgImages: false, // Enabling OG image generation will significantly increase render time; not recommended during local development
+    // Loading overlay configuration
+    loadingOverlay: {
+        // Enable loading overlay
+        enable: true,
+        // Loading title configuration
+        title: {
+            // Enable loading title
+            enable: true,
+            // Loading title text
+            content: "LOADING",
+            // Animation interval (s)
+            interval: 1.5,
+        },
+        // Loading spinner configuration
+        spinner: {
+            // Enable loading spinner
+            enable: true,
+            // Animation interval (s)
+            interval: 1.5,
+        },
+    },
     // Favicon configuration
     favicon: [
         {
@@ -181,36 +188,14 @@ export const siteConfig: SiteConfig = {
             // Icon size
             sizes: "32x32",
         },
-        {
-            // Icon file path
-            src: "/favicon/favicon-light-128.png",
-            // Theme ("light" | "dark")
-            theme: "light",
-            // Icon size
-            sizes: "128x128",
-        },
-        {
-            // Icon file path
-            src: "/favicon/favicon-dark-32.png",
-            // Theme ("light" | "dark")
-            theme: "dark",
-            // Icon size
-            sizes: "32x32",
-        },
-        {
-            // Icon file path
-            src: "/favicon/favicon-dark-128.png",
-            // Theme ("light" | "dark")
-            theme: "dark",
-            // Icon size
-            sizes: "128x128",
-        },
     ],
     // bangumi configuration
     bangumi: {
         // User ID
         userId: "your-bangumi-id", // You can set this to "sai" for testing
     },
+    // OpenGraph configuration
+    generateOgImages: false, // Enabling OG image generation will significantly increase render time; not recommended during local development
 };
 ```
 
@@ -224,10 +209,6 @@ export const siteConfig: SiteConfig = {
     - `defaultTheme`: Light/Dark theme options: `system` (follow system), `light` (light), `dark` (dark)
 - **Wallpaper settings**
     - `mode`: Default wallpaper mode. Supports three modes: `fullscreen` (full-screen wallpaper), `banner` (banner wallpaper), and `none` (solid background)
-    - **Image paths**: Paths are relative to the `/src` directory. If starting with `/`, paths are relative to the `/public` directory
-    - **Carousel**: When the image array length is greater than 1, carousel is enabled automatically
-    - **Responsive design**: Desktop and mobile can use different images
-    - **Typewriter effect**: Subtitle supports a dynamic typewriter effect with configurable speed and pause time
 
 
 ## Navbar Second-level Dropdown Menu Configuration
@@ -269,11 +250,11 @@ export const navBarConfig: NavBarConfig = {
 };
 ```
 
-- **`links`**: An array that defines the links in the navbar. Each link item can be a preset link (`LinkPreset`) or a custom link object
-    - **`name`**:  Displayed name of the menu item
-    - **`url`**:  URL to navigate to when the menu item is clicked
-    - **`children`**:  An array defining the submenu items of the current menu item. Submenu items have a similar structure to top-level items and can be nested further
-    - **`external`**: When set to `true`, this marks the link as external and opens it in a new tab
+- `links`: An array that defines the links in the navbar. Each link item can be a preset link (`LinkPreset`) or a custom link object
+    - `name`:  Displayed name of the menu item
+    - `url`:  URL to navigate to when the menu item is clicked
+    - `children`:  An array defining the submenu items of the current menu item. Submenu items have a similar structure to top-level items and can be nested further
+    - `external`: When set to `true`, this marks the link as external and opens it in a new tab
 
 
 ## Sidebar Layout Configuration
@@ -334,28 +315,28 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 ```
 
-- **`enable`**:  Whether to enable the sidebar feature. `true` to enable, `false` to disable.
-- **`position`**: Sidebar position on the page. Options: `"left"` or `"right"`.
-- **`components`**:  Array defining sidebar components and their configuration
-        - **`type`**:  Component type, e.g. `"profile"` (user profile), `"announcement"` (announcement), `"categories"` (categories), `"tags"` (tags)
-        - **`enable`**:  Whether to enable this component. `true` to enable, `false` to disable.
-        - **`order`**:  Display order of the component. Smaller numbers appear earlier in the sidebar.
-        - **`position`**:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
-        - **`responsive`**:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
-            - **`collapseThreshold`**:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
-- **`defaultAnimation`**: Default animation configuration
-    - **`enable`**: Whether to enable default sidebar component animations.
-    - **`baseDelay`**:  Base animation delay time (ms).
-    - **`increment`**:  Incremental delay (ms) per component. For example, the first component delays by `baseDelay`, the second by `baseDelay + increment`, and so on.
-- **`responsive`**: Responsive layout configuration
-    - **`breakpoints`**: Screen width breakpoints (pixels) for different devices:
-        - **`mobile`**: Mobile breakpoint (e.g. `768`).
-        - **`tablet`**: Tablet breakpoint (e.g. `1024`).
-        - **`desktop`**: Desktop breakpoint (e.g. `1280`).
-    - **`layout`**: Sidebar layout mode under different breakpoints:
-        - **`mobile`**: Layout mode on mobile. Options: `"hidden"` (hide sidebar) or `"sidebar"` (show sidebar, usually as a drawer).
-        - **`tablet`**: Layout mode on tablet. Options: `"hidden"` or `"sidebar"`.
-        - **`desktop`**: Layout mode on desktop. Options: `"hidden"` or `"sidebar"`.
+- `enable`:  Whether to enable the sidebar feature. `true` to enable, `false` to disable.
+- `position`: Sidebar position on the page. Options: `"left"` or `"right"`.
+- `components`:  Array defining sidebar components and their configuration
+        - `type`:  Component type, e.g. `"profile"` (user profile), `"announcement"` (announcement), `"categories"` (categories), `"tags"` (tags)
+        - `enable`:  Whether to enable this component. `true` to enable, `false` to disable.
+        - `order`:  Display order of the component. Smaller numbers appear earlier in the sidebar.
+        - `position`:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
+        - `responsive`:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
+            - `collapseThreshold`:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
+- `defaultAnimation`: Default animation configuration
+    - `enable`: Whether to enable default sidebar component animations.
+    - `baseDelay`:  Base animation delay time (ms).
+    - `increment`:  Incremental delay (ms) per component. For example, the first component delays by `baseDelay`, the second by `baseDelay + increment`, and so on.
+- `responsive`: Responsive layout configuration
+    - `breakpoints`: Screen width breakpoints (pixels) for different devices:
+        - `mobile`: Mobile breakpoint (e.g. `768`).
+        - `tablet`: Tablet breakpoint (e.g. `1024`).
+        - `desktop`: Desktop breakpoint (e.g. `1280`).
+    - `layout`: Sidebar layout mode under different breakpoints:
+        - `mobile`: Layout mode on mobile. Options: `"hidden"` (hide sidebar) or `"sidebar"` (show sidebar, usually as a drawer).
+        - `tablet`: Layout mode on tablet. Options: `"hidden"` or `"sidebar"`.
+        - `desktop`: Layout mode on desktop. Options: `"hidden"` or `"sidebar"`.
 
 
 ## Announcement Feature Configuration

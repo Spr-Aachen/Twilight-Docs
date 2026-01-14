@@ -19,13 +19,11 @@ src/config.ts
 配置网站的全局设置，包括语言、时区、主题色、壁纸等。
 
 ```typescript
-// 自动检测浏览器语言
-const SITE_LANG = detectBrowserLanguage("en"); // 服务端渲染时默认为 'en'
-// 如果需要强制使用特定语言，可以取消注释下面一行并设置语言代码
-//const SITE_LANG = "zh"; // 强制使用的语言代码，'zh', 'en', 'ja' 等
+// 设置浏览器语言
+const SITE_LANG = "en";
 
-// 设置网站时区
-const SITE_TIMEZONE = 8; // from -12 to 12 default in UTC+8
+// 设置网站时区 [-12, 12]
+const SITE_TIMEZONE = 8; // UTC+8
 
 // 站点配置
 export const siteConfig: SiteConfig = {
@@ -43,8 +41,6 @@ export const siteConfig: SiteConfig = {
         enable: true,
         // 翻译服务
         service: "client.edge", // 使用 Edge 浏览器
-        // 默认翻译语言
-        defaultLanguage: getTranslateLanguageFromConfig(SITE_LANG), // 根据检测到的语言自动设置默认翻译语言
         // 显示语言选择下拉框
         showSelectTag: false, // 使用自定义按钮
         // 自动检测用户语言
@@ -58,16 +54,13 @@ export const siteConfig: SiteConfig = {
     timeZone: SITE_TIMEZONE,
     // 字体配置
     font: {
-        // zenMaruGothic 字体 (适合日语和英语，对中文适配一般)
-        zenMaruGothic: {
-            // 作为全局字体
-            enable: true,
-        },
-        // Hanalei 字体 (适合中文)
-        hanalei: {
-            // 作为全局字体
-            enable: false,
-        },
+        // 示例字体配置 - Zen Maru Gothic
+        "Example - ZenMaruGothic": {
+            // 字体源 (字体 CSS 链接 | 字体文件路径)
+            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap", // 使用 ZenMaruGothic CSS 链接
+            // 字体名 (font-family)
+            family: "Zen Maru Gothic",
+        }
     },
     // 主题色配置
     themeColor: {
@@ -84,13 +77,13 @@ export const siteConfig: SiteConfig = {
         mode: "banner",
         // 图片源配置 (fullscreen 和 banner 模式共享)
         src: {
-            // 桌面壁纸图片 (支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
+            // 桌面壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             desktop: [
-                "/assets/desktop-banner/desktopBanner_1.webp",
+                "/assets/images/desktopWallpaper_1.webp",
             ],
-            // 移动壁纸图片 (支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
+            // 移动壁纸图片 (相对于 /public 目录; 支持单张图片或图片数组，当数组长度 > 1 时自动启用轮播)
             mobile: [
-                "/assets/mobile-banner/mobileBanner_1.webp",
+                "/assets/images/mobileWallpaper_1.webp",
             ],
         },
         // 壁纸位置 ('top' | 'center' | 'bottom')
@@ -100,14 +93,9 @@ export const siteConfig: SiteConfig = {
             // 为多张图片启用轮播，否则随机显示一张图片
             enable: true,
             // 轮播间隔时间 (秒)
-            interval: 3.3,
-        },
-        // PicFlow API 配置 (fullscreen 和 banner 模式共享)
-        imageApi: {
-            // 启用图片 API
-            enable: false,
-            // API 地址，返回每行一个图片链接的文本
-            url: "http://domain.com/api_v2.php?format=text&count=4",
+            interval: 3.6,
+            // 启用 Ken Burns 效果
+            kenBurns: true,
         },
         // Banner 模式专属配置
         banner: {
@@ -169,8 +157,27 @@ export const siteConfig: SiteConfig = {
             },
         },
     },
-    // OpenGraph 配置
-    generateOgImages: false, // 注意开启图片生成后要渲染很长时间，不建议本地调试的时候开启
+    // 加载页配置
+    loadingOverlay: {
+        // 是否启用加载页
+        enable: true,
+        // 加载标题配置
+        title: {
+            // 是否启用加载标题
+            enable: true,
+            // 加载标题文本
+            content: "LOADING",
+            // 动画周期 (s)
+            interval: 1.5,
+        },
+        // 加载动画配置
+        spinner: {
+            // 是否启用加载动画
+            enable: true,
+            // 动画周期 (s)
+            interval: 1.5,
+        },
+    },
     // favicon 配置
     favicon: [// 默认留空，若填写内容则会覆盖默认图标，内容示例如下
         {
@@ -187,6 +194,8 @@ export const siteConfig: SiteConfig = {
         // 用户 ID
         userId: "your-bangumi-id", // 可以设置为 "sai" 测试
     },
+    // OpenGraph 配置
+    generateOgImages: false, // 注意开启图片生成后要渲染很长时间，不建议本地调试的时候开启
 };
 ```
 
@@ -200,10 +209,6 @@ export const siteConfig: SiteConfig = {
     - `defaultTheme`: 黑白主题，有 `system` 跟随系统、`light` 浅色、`dark` 深色三个选项
 - 壁纸设置
     - `mode`: 壁纸默认模式，支持 fullscreen（全屏壁纸）、banner（横幅壁纸）、none（纯色背景）三种模式
-    - **图片路径**：相对于 `/src` 目录，如果以 `/` 开头则相对于 `/public` 目录
-    - **轮播功能**：当图片数组长度大于1时自动启用轮播
-    - **响应式设计**：桌面端和移动端可使用不同的图片
-    - **打字机效果**：副标题支持动态打字机效果，可配置速度和暂停时间
 
 
 ## 导航栏二级折叠菜单配置
@@ -245,11 +250,11 @@ export const navBarConfig: NavBarConfig = {
 };
 ```
 
-- `links`**: 一个数组，定义了导航栏中的各个链接。每个链接对象可以是一个预设链接 (`LinkPreset`)，也可以是一个自定义链接对象
-    - **`name`**:  菜单项显示的名称
-    - **`url`**:  菜单项点击后跳转的 URL
-    - **`children`**:  一个数组，定义了当前菜单项的子菜单。子菜单项的结构与顶级菜单项类似，可以继续嵌套
-    - **`external`**: 如果设置为 `true`，表示这是一个外部链接，会在新标签页中打开
+- `links`: 一个数组，定义了导航栏中的各个链接。每个链接对象可以是一个预设链接 (`LinkPreset`)，也可以是一个自定义链接对象
+    - `name`:  菜单项显示的名称
+    - `url`:  菜单项点击后跳转的 URL
+    - `children`:  一个数组，定义了当前菜单项的子菜单。子菜单项的结构与顶级菜单项类似，可以继续嵌套
+    - `external`: 如果设置为 `true`，表示这是一个外部链接，会在新标签页中打开
 
 
 ## 侧边栏布局配置
@@ -360,18 +365,18 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 };
 ```
 
-- **`components`**:   一个数组，定义了侧边栏中包含的各个组件及其配置
-        - **`type`**:  组件类型，例如：`"profile"`（用户资料）、`"announcement"`（公告）、`"categories"`（分类）、`"tags"`（标签）。
-        - **`enable`**:  是否启用该组件。设置为 `true` 启用，`false` 禁用。
-        - **`side`**: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
-        - **`order`**:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
-        - **`position`**:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
-        - **`responsive`**:  针对特定组件的响应式配置。例如，`categories` 和 `tags` 组件可以配置 `collapseThreshold`：
-            - **`collapseThreshold`**:  折叠阈值。当组件内的项目数量超过此值时，组件内容将自动折叠。
-- **`defaultAnimation`**: 默认动画配置
-    - **`enable`**: 是否启用侧边栏组件的默认动画效果。
-    - **`baseDelay`**:  动画的基础延迟时间（毫秒）。
-    - **`increment`**:  每个组件依次增加的动画延迟时间（毫秒）。例如，第一个组件延迟 `baseDelay`，第二个组件延迟 `baseDelay + increment`，以此类推。
+- `components`:   一个数组，定义了侧边栏中包含的各个组件及其配置
+        - `type`:  组件类型，例如：`"profile"`（用户资料）、`"announcement"`（公告）、`"categories"`（分类）、`"tags"`（标签）。
+        - `enable`:  是否启用该组件。设置为 `true` 启用，`false` 禁用。
+        - `side`: 组件在页面中的位置。可选值：`"left"`（左侧）或 `"right"`（右侧）。
+        - `order`:  组件的显示顺序。数字越小，组件在侧边栏中显示得越靠前。
+        - `position`:  组件在侧边栏中的定位方式。可选值：`"top"`: 固定在侧边栏顶部，不随滚动条滚动。`"sticky"`: 粘性定位，在滚动时保持可见。
+        - `responsive`:  针对特定组件的响应式配置。例如，`categories` 和 `tags` 组件可以配置 `collapseThreshold`：
+            - `collapseThreshold`:  折叠阈值。当组件内的项目数量超过此值时，组件内容将自动折叠。
+- `defaultAnimation`: 默认动画配置
+    - `enable`: 是否启用侧边栏组件的默认动画效果。
+    - `baseDelay`:  动画的基础延迟时间（毫秒）。
+    - `increment`:  每个组件依次增加的动画延迟时间（毫秒）。例如，第一个组件延迟 `baseDelay`，第二个组件延迟 `baseDelay + increment`，以此类推。
 
 
 ## 公告功能配置说明
