@@ -63,8 +63,8 @@ const NoteEN = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: 'Data Config',
-                    link: 'data/',
+                    text: 'Content Config',
+                    link: 'content/',
                     icon: 'ri:numbers-line'
                 },
             ]

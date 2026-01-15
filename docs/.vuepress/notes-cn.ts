@@ -74,8 +74,8 @@ const NoteZH = defineNoteConfig({
                     icon: "ri:bar-chart-2-line"
                 },
                 {
-                    text: "数据配置",
-                    link: "data/",
+                    text: "内容配置",
+                    link: "content/",
                     icon: "ri:numbers-line"
                 },
             ],
