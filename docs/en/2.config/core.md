@@ -199,62 +199,69 @@ export const siteConfig: SiteConfig = {
 };
 ```
 
-- **Site settings**
-    - `title`: Main title of the site, displayed in the browser tab and page header
-    - `subtitle`: Site subtitle, usually displayed under the banner on the homepage
-    - `lang`: Default language of the site, affects date formats, translation, etc.
-- **Theme settings**
+- `title`: Main title of the site, displayed in the browser tab and page header
+- `subtitle`: Site subtitle, usually displayed under the banner on the homepage
+- `lang`: Default language of the site, affects date formats, translation, etc.
+- `themeColor`
     - `hue`: Hue value of the theme color, can be any value between 0 and 360
     - `fixed`: When set to `true`, visitors cannot change the theme color
     - `defaultTheme`: Light/Dark theme options: `system` (follow system), `light` (light), `dark` (dark)
-- **Wallpaper settings**
+- `wallpaper`
     - `mode`: Default wallpaper mode. Supports three modes: `fullscreen` (full-screen wallpaper), `banner` (banner wallpaper), and `none` (solid background)
 
 
-## Navbar Second-level Dropdown Menu Configuration
+## Navbar Configuration
 
-Configure the second-level dropdown menus for the site navbar, including menu item names, links, whether they are external links, etc.
+Configure the site navbar links, including the name and URL of each navigation item.
 
 ```typescript
+// Navbar configuration
 export const navBarConfig: NavBarConfig = {
+    // Link configuration (supports multi-level menus)
     links: [
-        LinkPreset.Home,
+        //LinkPreset.Home,
+        // Primary navigation link - Archive
         LinkPreset.Archive,
+        // Primary navigation link - Exhibition
         {
-            name: "Links", // First-level menu name
-            url: "/links/", // First-level menu link (optional; can be empty if there are only child menus)
+            // Navigation name
+            name: "Exhibition",
+            // Navigation URL
+            url: "/exhibition/",
+            // Navigation icon
+            icon: "material-symbols:person",
+            // Navigation description
+            description: "A collection of my creative works and experiences",
+            // Child links
             children: [
-                {
-                    name: "GitHub", // Second-level menu name
-                    url: "https://github.com/Spr-Aachen", // Second-level menu link
-                    external: true, // External link
-                },
-                {
-                    name: "Bilibili",
-                    url: "https://space.bilibili.com/359461611",
-                    external: true,
-                },
-            ],
-        },
-        {
-            name: "My",
-            url: "/content/",
-            children: [
-                LinkPreset.About,
-                LinkPreset.Friends,
-                LinkPreset.Anime,
+                // Secondary navigation link - Projects
+                LinkPreset.Projects,
+                // Secondary navigation link - Skills
+                LinkPreset.Skills,
+                // Secondary navigation link - Timeline
+                LinkPreset.Timeline,
+                // Secondary navigation link - Diary
                 LinkPreset.Diary,
+                // Secondary navigation link - Albums
+                LinkPreset.Albums,
+                // Secondary navigation link - Anime
+                LinkPreset.Anime,
             ],
         },
+        // Primary navigation link - Friends
+        LinkPreset.Friends,
+        // Primary navigation link - About
+        LinkPreset.About,
     ],
 };
 ```
 
-- `links`: An array that defines the links in the navbar. Each link item can be a preset link (`LinkPreset`) or a custom link object
-    - `name`:  Displayed name of the menu item
-    - `url`:  URL to navigate to when the menu item is clicked
-    - `children`:  An array defining the submenu items of the current menu item. Submenu items have a similar structure to top-level items and can be nested further
-    - `external`: When set to `true`, this marks the link as external and opens it in a new tab
+- `links`: An array defining all links in the navbar. Each link can be a preset link (`LinkPreset`) or a custom link object
+    - `name`: Display name of the navigation item
+    - `url`: URL to navigate to when the item is clicked
+    - `icon`: Icon for the navigation item, using icon library names (e.g., FontAwesome, Material Icons, etc.)
+    - `description`: Short description of the navigation item, typically displayed as a tooltip
+    - `children`: An array defining child items of the current navigation item. Child structure is similar to parent items and can be nested further
 
 
 ## Sidebar Layout Configuration

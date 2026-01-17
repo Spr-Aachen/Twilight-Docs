@@ -199,62 +199,69 @@ export const siteConfig: SiteConfig = {
 };
 ```
 
-- 站点设置
-    - `title`：网站的主标题，显示在浏览器标签页和页面头部
-    - `subtitle`：网站的副标题，通常显示在主页横幅下方
-    - `lang`：网站的默认语言，影响日期格式、翻译等功能
-- 主题设置
+- `title`：网站的主标题，显示在浏览器标签页和页面头部
+- `subtitle`：网站的副标题，通常显示在主页横幅下方
+- `lang`：网站的默认语言，影响日期格式、翻译等功能
+- `themeColor`: 主题设置
     - `hue`：主题色的色相值，可以是 0-360 之间的任何数值
     - `fixed`：设置为 `true` 时，访客将无法更改主题色
     - `defaultTheme`: 黑白主题，有 `system` 跟随系统、`light` 浅色、`dark` 深色三个选项
-- 壁纸设置
+- `wallpaper`: 壁纸设置
     - `mode`: 壁纸默认模式，支持 fullscreen（全屏壁纸）、banner（横幅壁纸）、none（纯色背景）三种模式
 
 
-## 导航栏二级折叠菜单配置
+## 导航栏配置
 
-配置网站导航栏的二级折叠菜单，包括菜单项的名称、链接、是否为外部链接等。
+配置网站导航栏的导航链接，包括导航项的名称、链接等。
 
 ```typescript
+// 导航栏配置
 export const navBarConfig: NavBarConfig = {
+    // 链接配置 (支持多级菜单)
     links: [
-        LinkPreset.Home,
+        //LinkPreset.Home,
+        // 一级导航链接 - 归档
         LinkPreset.Archive,
+        // 一级导航链接 - 展览
         {
-            name: "Links", // 一级菜单名称
-            url: "/links/", // 一级菜单链接 (可选，如果只有子菜单，可以为空)
+            // 导航名称
+            name: "Exhibition",
+            // 导航链接
+            url: "/exhibition/",
+            // 导航图标
+            icon: "material-symbols:person",
+            // 导航描述
+            description: "A collection of my creative works and experiences",
+            // 子链接
             children: [
-                {
-                    name: "GitHub", // 二级菜单名称
-                    url: "https://github.com/Spr-Aachen", // 二级菜单链接
-                    external: true, // 外部链接
-                },
-                {
-                    name: "Bilibili",
-                    url: "https://space.bilibili.com/359461611",
-                    external: true,
-                },
-            ],
-        },
-        {
-            name: "My",
-            url: "/content/",
-            children: [
-                LinkPreset.About,
-                LinkPreset.Friends,
-                LinkPreset.Anime,
+                // 二级导航链接 - 项目
+                LinkPreset.Projects,
+                // 二级导航链接 - 技能
+                LinkPreset.Skills,
+                // 二级导航链接 - 时间线
+                LinkPreset.Timeline,
+                // 二级导航链接 - 日记
                 LinkPreset.Diary,
+                // 二级导航链接 - 相册
+                LinkPreset.Albums,
+                // 二级导航链接 - 动画
+                LinkPreset.Anime,
             ],
         },
+        // 一级导航链接 - 好友
+        LinkPreset.Friends,
+        // 一级导航链接 - 关于
+        LinkPreset.About,
     ],
 };
 ```
 
 - `links`: 一个数组，定义了导航栏中的各个链接。每个链接对象可以是一个预设链接 (`LinkPreset`)，也可以是一个自定义链接对象
-    - `name`:  菜单项显示的名称
-    - `url`:  菜单项点击后跳转的 URL
-    - `children`:  一个数组，定义了当前菜单项的子菜单。子菜单项的结构与顶级菜单项类似，可以继续嵌套
-    - `external`: 如果设置为 `true`，表示这是一个外部链接，会在新标签页中打开
+    - `name`:  导航项显示的名称
+    - `url`:  导航项点击后跳转的 URL
+    - `icon`:  导航项的图标，可以使用图标库（如 FontAwesome、Material Icons 等）的图标名称
+    - `description`:  导航项的简短描述，通常显示为工具
+    - `children`:  一个数组，定义了当前导航项的子项。子项的结构与父级导航项类似，可以继续嵌套
 
 
 ## 侧边栏布局配置
