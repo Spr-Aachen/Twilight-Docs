@@ -4,579 +4,535 @@ createTime: 2025/10/10 10:10:10
 permalink: /en/config/core/
 ---
 
-Site configuration
+Site Configuration
 
 
 ## File Location
 
 ```
-src/config.ts
+Project Root/
+└── twilight.config.yaml
 ```
 
 
 ## Site Settings
 
-Configure global settings for the website, including language, time zone, theme color, wallpaper, and more.
+Configure the global settings of the website, including URL, language, time zone, theme color, wallpaper, etc.
 
-```typescript
-// Set website language code
-const SITE_LANG = "en";
-
-// Set website time zone [-12, 12]
-const SITE_TIMEZONE = 8; // UTC+8
-
-// Site configuration
-export const siteConfig: SiteConfig = {
-    // Site URL (must end with a trailing slash)
-    siteURL: "https://twilight.spr-aachen.com/", // Replace with your site URL and ensure it ends with a slash
-    // Site title
-    title: "Twilight",
-    // Site subtitle
-    subtitle: "Blog Template",
-    // Language configuration
-    lang: SITE_LANG, // Automatically detected browser language
-    // Translation configuration
-    translate: {
-        // Enable translation feature
-        enable: true,
-        // Translation service
-        service: "client.edge", // Use Edge browser translation
-        // Show language select dropdown
-        showSelectTag: false, // Use a custom button instead
-        // Automatically detect user language
-        autoDiscriminate: true,
-        // CSS class names to ignore during translation
-        ignoreClasses: ["ignore", "banner-title", "banner-subtitle"],
-        // HTML tags to ignore during translation
-        ignoreTags: ["script", "style", "code", "pre"],
-    },
-    // Time zone configuration
-    timeZone: SITE_TIMEZONE,
-    // Font configuration
-    font: {
-        // Font configuration example
-        "Example - ZenMaruGothic": {
-            // Font source (font CSS link | font file path)
-            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap", // Use ZenMaruGothic CSS link
-            // Font name (font-family)
-            family: "Zen Maru Gothic",
-        }
-    },
-    // Theme color configuration
-    themeColor: {
-        // Default hue for the theme color (0–360, e.g. red: 0, cyan: 200, teal: 250, pink: 345)
-        hue: 255,
-        // Hide theme color picker from visitors
-        fixed: false,
-    },
-    // Default theme ("system" follow system | "light" light | "dark" dark)
-    defaultTheme: "dark",
-    // Wallpaper configuration
-    wallpaper: {
-        // Mode ("banner" banner | "fullscreen" full screen | "none" solid color)
-        mode: "banner",
-        // Image source configuration (shared by fullscreen and banner modes)
-        src: {
-            // Desktop wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
-            desktop: [
-                "/assets/images/desktopWallpaper_1.webp",
-            ],
-            // Mobile wallpaper images (relative to the `/public` directory; supports a single image or an array; when the array length > 1, carousel is enabled automatically)
-            mobile: [
-                "/assets/images/mobileWallpaper_1.webp",
-            ],
-        },
-        // Wallpaper position ('top' | 'center' | 'bottom')
-        position: "center",
-        // Carousel configuration (shared by fullscreen and banner modes)
-        carousel: {
-            // Enable carousel for multiple images, otherwise a random image is shown
-            enable: true,
-            // Carousel interval (seconds)
-            interval: 3.6,
-            // Enable Ken Burns effect
-            kenBurns: true,
-        },
-        // Banner mode specific configuration
-        banner: {
-            // Banner text configuration
-            homeText: {
-                // Show text on the homepage
-                enable: true,
-                // Main title
-                title: "Twilight",
-                // Subtitle, supports a single string or an array of strings
-                subtitle: [
-                    "Illuminate Our Paths",
-                ],
-                // Subtitle typewriter effect
-                typewriter: {
-                    // Enable typewriter effect for subtitle
-                    enable: true,
-                    // Typing speed (ms)
-                    speed: 111,
-                    // Deletion speed (ms)
-                    deleteSpeed: 51,
-                    // Pause time after fully shown (ms)
-                    pauseTime: 3000,
-                },
-            },
-            // Banner image credit text
-            credit: {
-                // Show banner image credit text
-                enable: false,
-                // Text to display as credit
-                text: "Describe",
-                // (Optional) URL of the original artwork or artist page
-                url: "",
-            },
-            // Navbar configuration
-            navbar: {
-                // Navbar transparency mode ("semi" semi-transparent with rounded corners | "full" fully transparent | "semifull" dynamic transparency)
-                transparentMode: "semifull",
-            },
-            // Waves effect configuration
-            waves: {
-                // Enable waves effect
-                enable: true,
-                // Enable performance mode (simplify waves effect to improve performance)
-                performanceMode: true,
-            },
-        },
-        // Fullscreen mode specific configuration
-        fullscreen: {
-            // Z-index
-            zIndex: -1, // Ensure wallpaper stays in the background layer
-            // Wallpaper opacity, between 0 and 1
-            opacity: 0.9,
-            // Background blur level (pixel value)
-            blur: 1,
-            // Navbar transparency mode
-            navbar: {
-                transparentMode: "semi", // Use semi-transparent mode instead of fully transparent
-            },
-        },
-    },
-    // Loading overlay configuration
-    loadingOverlay: {
-        // Enable loading overlay
-        enable: true,
-        // Loading title configuration
-        title: {
-            // Enable loading title
-            enable: true,
-            // Loading title text
-            content: "LOADING",
-            // Animation interval (s)
-            interval: 1.5,
-        },
-        // Loading spinner configuration
-        spinner: {
-            // Enable loading spinner
-            enable: true,
-            // Animation interval (s)
-            interval: 1.5,
-        },
-    },
-    // Favicon configuration
-    favicon: [
-        {
-            // Icon file path
-            src: "/favicon/favicon-light-32.png",
-            // Theme ("light" | "dark")
-            theme: "light",
-            // Icon size
-            sizes: "32x32",
-        },
-    ],
-    // bangumi configuration
-    bangumi: {
-        // User ID
-        userId: "your-bangumi-id", // You can set this to "sai" for testing
-    },
-    // OpenGraph configuration
-    generateOgImages: false, // Enabling OG image generation will significantly increase render time; not recommended during local development
-};
+```yaml
+site:
+    # Site URL (ending with a slash)
+    siteURL: "https://twilight.spr-aachen.com/"
+    # Site Title
+    title: "Twilight"
+    # Site Subtitle
+    subtitle: "Blog Template"
+    # Language Configuration
+    lang: "en"
+    # Translation Configuration
+    translate:
+        # Enable translation feature
+        enable: true
+        # Translation service
+        service: "client.edge"
+        # Show language selection dropdown
+        showSelectTag: false
+        # Automatically detect user language
+        autoDiscriminate: true
+        # CSS class names to ignore during translation
+        ignoreClasses:
+            - "ignore"
+            - "banner-title"
+            - "banner-subtitle"
+        # HTML tags to ignore during translation
+        ignoreTags:
+            - "script"
+            - "style"
+            - "code"
+            - "pre"
+    # Time Zone Configuration
+    timeZone: 8
+    # Font Configuration
+    font:
+        # Example font configuration - Zen Maru Gothic
+        "Example - ZenMaruGothic":
+            # Font source (Font CSS link | Font file path)
+            src: "https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap"
+            # Font name (font-family)
+            family: "Zen Maru Gothic"
+    # Theme Color Configuration
+    themeColor:
+        # Default hue of the theme color (range from 0 to 360. e.g., Red: 0, Cyan: 200, Teal: 250, Pink: 345)
+        hue: 255
+    # Default Theme ("system" follows system | "light" light mode | "dark" dark mode)
+    defaultTheme: "dark"
+    # Wallpaper Configuration
+    wallpaper:
+        # Mode ("banner" banner | "fullscreen" full screen | "none" solid color)
+        mode: "banner"
+        # Image source configuration (shared by fullscreen and banner modes)
+        src:
+            # Desktop wallpaper image (relative to /public directory; supports a single image or an image array, carousel is automatically enabled when array length > 1)
+            desktop:
+                - "/assets/images/desktopWallpaper_1.jpg"
+                - "/assets/images/desktopWallpaper_2.jpg"
+                - "/assets/images/desktopWallpaper_3.jpg"
+            # Mobile wallpaper image (relative to /public directory; supports a single image or an image array, carousel is automatically enabled when array length > 1)
+            mobile:
+                - "/assets/images/mobileWallpaper_1.jpg"
+                - "/assets/images/mobileWallpaper_2.jpg"
+        # Wallpaper position ('top' | 'center' | 'bottom')
+        position: "center"
+        # Carousel configuration (shared by fullscreen and banner modes)
+        carousel:
+            # Enable carousel for multiple images, otherwise display one image randomly
+            enable: true
+            # Carousel interval (seconds)
+            interval: 3.6
+            # Enable Ken Burns effect
+            kenBurns: true
+        # Banner mode specific configuration
+        banner:
+            # Banner text configuration
+            homeText:
+                # Display text on the home page
+                enable: true
+                # Main title
+                title: "Twilight"
+                # Subtitle, supports a single string or a string array
+                subtitle:
+                    - "Illuminate Our Paths"
+                # Subtitle typewriter effect
+                typewriter:
+                    # Enable subtitle typewriter effect
+                    enable: true
+                    # Typing speed (ms)
+                    speed: 111
+                    # Deleting speed (ms)
+                    deleteSpeed: 51
+                    # Pause time after full display (ms)
+                    pauseTime: 3000
+            # Banner image source credit text
+            credit:
+                # Display banner image source credit text
+                enable: false
+                # Source text to display
+                text: "Describe"
+                # (Optional) URL link to the original artwork or artist page
+                url: ""
+            # Navigation bar configuration
+            navbar:
+                # Navigation bar transparency mode ("semi" semi-transparent with rounded corners | "full" fully transparent | "semifull" dynamic transparency)
+                transparentMode: "semifull"
+            # Water ripple effect configuration
+            waves:
+                # Enable water ripple effect
+                enable: true
+                # Enable performance mode (simplifies wave effects to improve performance)
+                performanceMode: false
+        # Fullscreen mode specific configuration
+        fullscreen:
+            # Layer level
+            zIndex: -1
+            # Wallpaper opacity, between 0-1
+            opacity: 0.9
+            # Background blur degree (pixel value)
+            blur: 1
+            # Navigation bar transparency mode
+            navbar:
+                transparentMode: "semi"
+    # Loading page configuration
+    loadingOverlay:
+        # Whether to enable the loading page
+        enable: true
+        # Loading title configuration
+        title:
+            # Whether to enable the loading title
+            enable: true
+            # Loading title text
+            content: "LOADING"
+            # Animation cycle (s)
+            interval: 1.5
+        # Loading animation configuration
+        spinner:
+            # Whether to enable the loading animation
+            enable: true
+            # Animation cycle (s)
+            interval: 1.5
+    # favicon configuration
+    favicon: []
+    # bangumi configuration
+    bangumi:
+        # User ID
+        userId: "your-bangumi-id"
+    # OpenGraph configuration
+    generateOgImages: false
 ```
 
-- `title`: Main title of the site, displayed in the browser tab and page header
-- `subtitle`: Site subtitle, usually displayed under the banner on the homepage
-- `lang`: Default language of the site, affects date formats, translation, etc.
-- `themeColor`
-    - `hue`: Hue value of the theme color, can be any value between 0 and 360
-    - `fixed`: When set to `true`, visitors cannot change the theme color
-    - `defaultTheme`: Light/Dark theme options: `system` (follow system), `light` (light), `dark` (dark)
-- `wallpaper`
-    - `mode`: Default wallpaper mode. Supports three modes: `fullscreen` (full-screen wallpaper), `banner` (banner wallpaper), and `none` (solid background)
+- `title`: The main title of the website, displayed in browser tabs and the page header
+- `subtitle`: The subtitle of the website, usually displayed below the home page banner
+- `lang`: The default language of the website, affecting date format, translation, etc.
+- `themeColor`: Theme settings
+    - `hue`: The hue value of the theme color, can be any value between 0-360
+    - `fixed`: When set to `true`, visitors will not be able to change the theme color
+    - `defaultTheme`: Black and white theme, with three options: `system` follows system, `light` light mode, `dark` dark mode
+- `wallpaper`: Wallpaper settings
+    - `mode`: Default wallpaper mode, supports three modes: fullscreen (full screen wallpaper), banner (banner wallpaper), none (solid color background)
 
 
-## Navbar Configuration
+## Site Statistics Configuration
 
-Configure the site navbar links, including the name and URL of each navigation item.
+Configure website page view statistics
 
-```typescript
-// Navbar configuration
-export const navBarConfig: NavBarConfig = {
-    // Link configuration (supports multi-level menus)
-    links: [
-        //LinkPreset.Home,
-        // Primary navigation link - Archive
-        LinkPreset.Archive,
-        // Primary navigation link - Exhibition
-        {
-            // Navigation name
-            name: "Exhibition",
-            // Navigation URL
-            url: "/exhibition/",
-            // Navigation icon
-            icon: "material-symbols:person",
-            // Navigation description
-            description: "A collection of my creative works and experiences",
-            // Child links
-            children: [
-                // Secondary navigation link - Projects
-                LinkPreset.Projects,
-                // Secondary navigation link - Skills
-                LinkPreset.Skills,
-                // Secondary navigation link - Timeline
-                LinkPreset.Timeline,
-                // Secondary navigation link - Diary
-                LinkPreset.Diary,
-                // Secondary navigation link - Albums
-                LinkPreset.Albums,
-                // Secondary navigation link - Anime
-                LinkPreset.Anime,
-            ],
-        },
-        // Primary navigation link - Friends
-        LinkPreset.Friends,
-        // Primary navigation link - About
-        LinkPreset.About,
-    ],
-};
+```yaml
+umami:
+    # Whether to show Umami statistics
+    enabled: false
+    # UmamiCloudAPI address
+    baseUrl: "https://api.umami.is"
+    # API key (can be overridden by environment variables)
+    apiKey: ""
+    # Script to insert (can be overridden by environment variables)
+    scripts: ""
 ```
 
-- `links`: An array defining all links in the navbar. Each link can be a preset link (`LinkPreset`) or a custom link object
-    - `name`: Display name of the navigation item
-    - `url`: URL to navigate to when the item is clicked
-    - `icon`: Icon for the navigation item, using icon library names (e.g., FontAwesome, Material Icons, etc.)
-    - `description`: Short description of the navigation item, typically displayed as a tooltip
-    - `children`: An array defining child items of the current navigation item. Child structure is similar to parent items and can be nested further
+
+## Navigation Bar Configuration
+
+Configure the navigation links of the website navigation bar, including the name and link of the navigation items.
+
+```yaml
+navbar:
+    # Link configuration (link presets are located in LinkPresets in src/constants/link-presets.ts)
+    links:
+        - # Level 1 navigation link - Home (preset)
+            "Home"
+        - # Level 1 navigation link - Archive (preset)
+            "Archive"
+        - # Level 1 navigation link - Exhibition (custom)
+            # Navigation name
+            name: "Exhibition"
+            # Navigation link
+            url: "/exhibition/"
+            # Navigation icon
+            icon: "material-symbols:person"
+            # Navigation description
+            description: "A collection of my creative works and experiences"
+            # Sub-links
+            children:
+                - # Level 2 navigation link - Projects (preset)
+                    "Projects"
+                - # Level 2 navigation link - Skills (preset)
+                    "Skills"
+                - # Level 2 navigation link - Timeline (preset)
+                    "Timeline"
+                - # Level 2 navigation link - Diary (preset)
+                    "Diary"
+                - # Level 2 navigation link - Albums (preset)
+                    "Albums"
+                - # Level 2 navigation link - Anime (preset)
+                    "Anime"
+        - # Level 1 navigation link - Friends (preset)
+            "Friends"
+        - # Level 1 navigation link - About (preset)
+            "About"
+```
+
+- `links`: An array defining the various links in the navigation bar. Each link object can be a preset link (`LinkPreset`) or a custom link object
+    - `name`: The name displayed for the navigation item
+    - `url`: The URL to jump to after clicking the navigation item
+    - `icon`: The icon of the navigation item, you can use icon names from icon libraries (such as FontAwesome, Material Icons, etc.)
+    - `description`: A short description of the navigation item, usually displayed as a tooltip
+    - `children`: An array defining the sub-items of the current navigation item. The structure of sub-items is similar to the parent navigation item and can be further nested
 
 
 ## Sidebar Layout Configuration
 
-Configure sidebar visibility, ordering, animations, and responsive behavior.
+Configure the display, sorting, animation, and responsive behavior of the website sidebar
 
-```typescript
-export const sidebarLayoutConfig: SidebarLayoutConfig = {
-    enable: true,
-    position: "left",
-    components: [
-        {
-            type: "profile",
-            enable: true,
-            order: 1,
-            position: "top",
-        },
-        {
-            type: "categories",
-            enable: true,
-            order: 2,
-            position: "sticky",
-            responsive: {
-                collapseThreshold: 5,
-            },
-        },
-        {
-            type: "toc",
-            enable: true,
-            side: "right",
-            order: 1,
-            position: "sticky",
-            customProps: {
-                // TOC depth (1–6, 1 shows only h1, 2 shows h1 and h2, and so on)
-                depth: 3,
-            },
-        },
-    ],
-
-    defaultAnimation: {
-        enable: true,
-        baseDelay: 0,
-        increment: 50,
-    },
-
-    responsive: {
-        breakpoints: {
-            mobile: 768,
-            tablet: 1024,
-            desktop: 1280,
-        },
-        layout: {
-            mobile: "sidebar",
-            tablet: "sidebar",
-            desktop: "sidebar",
-        },
-    },
-};
+```yaml
+# Sidebar configuration
+sidebar:
+    # Sidebar component configuration list (sidebar component presets are located in WidgetComponentType in src/types/config.ts)
+    components:
+        # Left sidebar
+        left:
+            - # Component - Profile (preset)
+                # Type
+                type: "profile"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "top"
+            - # Component - Announcement (preset)
+                # Type
+                type: "announcement"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "top"
+            - # Component - Post Categories (preset)
+                # Type
+                type: "categories"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "sticky"
+                # Responsive configuration
+                responsive:
+                    # Collapse threshold
+                    collapseThreshold: 5
+            - # Component - Post Tags (preset)
+                # Type
+                type: "tags"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "sticky"
+                # Responsive configuration
+                responsive:
+                    # Collapse threshold
+                    collapseThreshold: 20
+        # Right sidebar
+        right:
+            - # Component - Post TOC (preset)
+                # Type
+                type: "toc"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "sticky"
+                # Custom properties
+                customProps:
+                    # TOC depth (1-6, 1 means only display h1 titles, 2 means display h1 and h2 titles, and so on)
+                    depth: 3
+            - # Component - Post Statistics (preset)
+                # Type
+                type: "statistics"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "sticky"
 ```
 
-- `enable`:  Whether to enable the sidebar feature. `true` to enable, `false` to disable.
-- `position`: Sidebar position on the page. Options: `"left"` or `"right"`.
-- `components`:  Array defining sidebar components and their configuration
-        - `type`:  Component type, e.g. `"profile"` (user profile), `"announcement"` (announcement), `"categories"` (categories), `"tags"` (tags)
-        - `enable`:  Whether to enable this component. `true` to enable, `false` to disable.
-        - `order`:  Display order of the component. Smaller numbers appear earlier in the sidebar.
-        - `position`:  Placement of the component in the sidebar. Options: `"top"`: fixed at the top of the sidebar; `"sticky"`: sticky positioning, stays visible when scrolling.
-        - `responsive`:  Per-component responsive configuration. For example, `categories` and `tags` can configure `collapseThreshold`:
-            - `collapseThreshold`:  Collapse threshold. When the number of items in the component exceeds this value, the component content will be collapsed.
-- `defaultAnimation`: Default animation configuration
-    - `enable`: Whether to enable default sidebar component animations.
-    - `baseDelay`:  Base animation delay time (ms).
-    - `increment`:  Incremental delay (ms) per component. For example, the first component delays by `baseDelay`, the second by `baseDelay + increment`, and so on.
-- `responsive`: Responsive layout configuration
-    - `breakpoints`: Screen width breakpoints (pixels) for different devices:
-        - `mobile`: Mobile breakpoint (e.g. `768`).
-        - `tablet`: Tablet breakpoint (e.g. `1024`).
-        - `desktop`: Desktop breakpoint (e.g. `1280`).
-    - `layout`: Sidebar layout mode under different breakpoints:
-        - `mobile`: Layout mode on mobile. Options: `"hidden"` (hide sidebar) or `"sidebar"` (show sidebar, usually as a drawer).
-        - `tablet`: Layout mode on tablet. Options: `"hidden"` or `"sidebar"`.
-        - `desktop`: Layout mode on desktop. Options: `"hidden"` or `"sidebar"`.
 
+## Profile Configuration
 
-## Announcement Feature Configuration
+Configure website profile, including avatar, bio, links, etc.
 
-Configure the site announcement feature, including title, content, links, etc.
-
-```typescript
-export const announcementConfig: AnnouncementConfig = {
-    // Announcement title
-    title: "Announcement",
-    // Announcement content
-    content: "Welcome to my blog!",
-    // Allow users to close the announcement
-    closable: true,
-    // Link configuration
-    link: {
-        // Enable link button
-        enable: true,
-        // Link text
-        text: "Learn More",
-        // Link URL
-        url: "/about/",
-        // Whether it is an external link
-        external: false, // Internal link
-    },
-};
+```yaml
+profile:
+    # Avatar configuration (relative to /public directory)
+    avatar: "/assets/images/avatar.jpg"
+    # Information configuration
+    name: "Twilight"
+    # Bio configuration
+    bio: "Hi"
+    # Link configuration
+    links:
+        - # Link example
+            # Name
+            name: "GitHub"
+            # Icon
+            icon: "fa6-brands:github"
+            # Link
+            url: "https://github.com/Spr-Aachen/Twilight"
 ```
 
-- `enable`: Set to `false` to hide the announcement
-- `title`: Announcement title
-- `content`: Announcement content
-- `closable`: Set to `true` to allow users to close the announcement
-- `link.enable`: Set to `true` to show the link button
-- `link.text`: Text of the link button
-- `link.url`: URL of the link button
-- `link.external`: Set to `true` to display it as an external link button
+
+## Announcement Feature Configuration Description
+
+Configure website announcement feature, including title, content, link, etc.
+
+```yaml
+announcement:
+    # Announcement title
+    title: "Announcement"
+    # Announcement content
+    content: "Welcome to my blog!"
+    # Allow users to close the announcement
+    closable: true
+    # Link configuration
+    link:
+        # Enable link
+        enable: true
+        # Link text
+        text: "Learn More"
+        # Link URL
+        url: "/about/"
+        # Whether it's an external link
+        external: false
+```
 
 
 ## Post Settings
 
-Configure post display, editing, table of contents, and related features.
+Configure post display, editing, TOC, and other features.
 
-```typescript
-export const postConfig: PostConfig = {
-    // Show "Last Modified" card
-    showLastModified: true,
-    // Show cover image inside article content
-    showCoverInContent: false,
-    // Code highlight configuration
-    expressiveCode: {
-        // Theme
-        theme: "github-dark", // Dark background
-    },
-    // License configuration
-    license: {
-        // Enable license
-        enable: true,
-        // License name
-        name: "CC BY-NC-SA 4.0",
-        // License URL
-        url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-    },
-    // Comment configuration
-    comment: {
-        // Enable comments
-        enable: false,
-        // Twikoo comment system configuration
-        twikoo: {
-            // Environment ID
-            envId: "https://twikoo.vercel.app",
-            // Language
-            lang: "en",
-        },
-    },
-};
+```yaml
+post:
+    # Show "Last Modified" card
+    showLastModified: true
+    # Show cover in post content
+    showCoverInContent: false
+    # Code highlighting configuration
+    expressiveCode:
+        # Theme
+        theme: "github-dark"
+    # License configuration
+    license:
+        # Enable license
+        enable: true
+        # License name
+        name: "CC BY-NC-SA 4.0"
+        # License link
+        url: "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+    # Comment configuration
+    comment:
+        # Enable comment feature
+        enable: false
+        # Twikoo comment system configuration
+        twikoo:
+            # Environment ID
+            envId: "https://twikoo.vercel.app"
+            # Language
+            lang: "en"
 ```
 
-- License configuration controls the license display at the bottom of posts
-- Code block configuration controls the style of code blocks; optional themes include: `github-dark`, `dracula`, `one-dark`, etc.
-- Comment system configuration controls the comment section at the bottom of posts; you need to create an environment in [Twikoo](https://twikoo.js.org/) and obtain an environment ID first
+- License configuration controls the license display at the bottom of the post
+- Code block configuration controls the display style of code blocks, optional themes include: `github-dark`, `dracula`, `one-dark`, etc.
+- Comment system configuration controls the comment system at the bottom of the post, you need to create an environment on [Twikoo](https://twikoo.js.org/) and get the environment ID first
 
 
-## Footer Configuration
+## Enable Footer Feature
 
-Configure footer
+Configure website footer
 
-```typescript
-export const footerConfig: FooterConfig = {
-    // Enable footer HTML injection
-    enable: false,
-    // Customize HTML content
-    customHtml: "",
-};
+```yaml
+footer:
+    # Enable Footer HTML injection feature
+    enable: false
+    # Custom HTML content, used to add record numbers and other information
+    customHtml: ""
 ```
 
 
-## Particle Effect Configuration
+## Particle Effects Configuration
 
-Configure particle effects such as visibility, quantity, movement speed, and more.
+Configure the display, quantity, moving speed, and other features of particle effects.
 
-```typescript
-export const particleConfig: ParticleConfig = {
-    // Enable particle effects
-    enable: true,
-    // Number of particles
-    particleNum: 12,
-    // Maximum times particles can go out of bounds; -1 for infinite loop
-    limitTimes: -1,
-    // Particle size configuration
-    size: {
-        // Minimum size multiplier
-        min: 0.3,
-        // Maximum size multiplier
-        max: 0.9,
-    },
-    // Particle opacity configuration
-    opacity: {
-        // Minimum opacity
-        min: 0.3,
-        // Maximum opacity
-        max: 0.9,
-    },
-    // Particle movement speed configuration
-    speed: {
-        // Horizontal speed
-        horizontal: {
-            // Minimum value
-            min: -0.9,
-            // Maximum value
-            max: 0.9,
-        },
-        // Vertical speed
-        vertical: {
-            // Minimum value
-            min: 0.15,
-            // Maximum value
-            max: 0.3,
-        },
-        // Rotation speed
-        rotation: 0.12,
-        // Fade-out speed
-        fadeSpeed: 0.12, // Should not be greater than minimum opacity
-    },
-    // Particle z-index
-    zIndex: 100, // Ensure particles are rendered at an appropriate layer
-};
+```yaml
+particle:
+    # Enable particle effects
+    enable: true
+    # Number of particles
+    particleNum: 12
+    # Particle boundary limit times, -1 for infinite loop
+    limitTimes: -1
+    # Particle size configuration
+    size:
+        # Minimum particle size multiplier
+        min: 0.3
+        # Maximum particle size multiplier
+        max: 0.9
+    # Particle opacity configuration
+    opacity:
+        # Minimum particle opacity
+        min: 0.3
+        # Maximum particle opacity
+        max: 0.9
+    # Particle moving speed configuration
+    speed:
+        # Horizontal moving speed
+        horizontal:
+            # Minimum value
+            min: -0.9
+            # Maximum value
+            max: 0.9
+        # Vertical moving speed
+        vertical:
+            # Minimum value
+            min: 0.15
+            # Maximum value
+            max: 0.3
+        # Rotation speed
+        rotation: 0.12
+        # Fading speed
+        fadeSpeed: 0.12
+    # Particle layer level
+    zIndex: 100
 ```
 
 
-## Music Player Configuration
+## Music Configuration
 
-Configure music player such as default mode, Meting API, local playlist, and more.
+Configure the default mode of the music player, Meting API, local playlist, and other features
 
-```typescript
-export const musicPlayerConfig: MusicPlayerConfig = {
-    // enable music player
-    enable: true,
-    // default mode ("meting" | "local")
-    mode: "meting",
-    // meting mode specific configuration
-    meting: {
-        // Meting API address
-        meting_api: "https://meting-api-omega.vercel.app/api",
-        // music server
-        server: "netease",
-        // playlist/song ID
-        id: "2161912966",
-        // type ("playlist" | "song")
-        type: "playlist",
-    },
-    // local mode specific configuration
-    local: {
-        // playlist
-        playlist: [
-            {
-                // order
-                id: 1,
-                // title
-                title: "深海之息",
-                // author
-                artist: "Youzee Music",
-                // cover
-                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg",
-                // path
-                url: "assets/music/url/深海之息.m4a",
-                // duration
-                duration: 146,
-            },
-        ],
-    },
-};
+```yaml
+musicPlayer:
+    # Enable music player feature
+    enable: true
+    # Default mode ("meting" API | "local" local)
+    mode: "meting"
+    # meting mode specific configuration
+    meting:
+        # Meting API address
+        meting_api: "https://api.i-meto.com/meting/api"
+        # Music platform
+        server: "netease"
+        # Type ("playlist" playlist | "song" single)
+        type: "playlist"
+        # Resource ID
+        id: "2161912966"
+    # local mode specific configuration
+    local:
+        # Playlist
+        playlist:
+            - # List example
+                # ID
+                id: 1
+                # Title
+                title: "深海之息"
+                # Artist
+                artist: "Youzee Music"
+                # Cover
+                cover: "https://p1.music.126.net/PhKOqFtljgHDDpKYM2ADUA==/109951169858309716.jpg"
+                # Path
+                url: "assets/music/深海之息.m4a"
+                # Duration
+                duration: 146
+    # Whether to auto-play
+    autoplay: true
 ```
 
 
-## Live2D Assistant (Pio) Configuration
+## Steerable Girl (Pio) Configuration
 
-Configure the Live2D assistant display, position, dialog, and related features.
+Configure the display, position, dialog box, and other features of the steerable girl.
 
-```typescript
-export const pioConfig: import("./types/config").PioConfig = {
-    // Enable Live2D assistant
-    enable: false,
-    // Model file paths
-    models: ["/pio/models/pio/model.json"],
-    // Assistant position
-    position: "left",
-    // Assistant width
-    width: 280,
-    // Assistant height
-    height: 250,
-    // Display mode
-    mode: "draggable",
-    // Hide on mobile devices
-    hiddenOnMobile: true,
-    // Dialog configuration
-    dialog: {
-        // Welcome message
-        welcome: "Welcome!",
-        // Touch prompts
-        touch: [
-            "What are you doing?",
-            "Stop touching me!",
-            "Don't bully me like that!",
-            "(｡í _ ì｡)",
-        ],
-        // Homepage tip
-        home: "Click here to go back to homepage!",
-        // Outfit change prompts
-        skin: ["Want to see my new outfit?", "The new outfit looks great~"],
-        // Close prompt
-        close: "See you next time~",
-        // About link
-        link: "https://nav.kungal.org",
-    },
-};
+```yaml
+pio:
+    # Enable pio
+    enable: false
+    # Model file paths
+    models:
+        - "/pio/models/pio/model.json"
+    # Pio position
+    position: "left"
+    # Pio width
+    width: 280
+    # Pio height
+    height: 250
+    # Display mode
+    mode: "draggable"
+    # Whether to hide on mobile devices
+    hiddenOnMobile: true
+    # Dialog box configuration
+    dialog:
+        # Welcome message
+        welcome: "Welcome!"
+        # Touch tips
+        touch:
+            - "What are you doing?"
+            - "Stop touching me!"
+            - "Don't bully me like that!"
+            - "(｡í _ ì｡)"
+        # Home page tips
+        home: "Click here to go back to homepage!"
+        # Skin change tips
+        skin:
+            - "Want to see my new outfit?"
+            - "The new outfit looks great~"
+        # Close tips
+        close: "See you next time~"
+        # About link
+        link: "https://nav.kungal.org"
 ```
