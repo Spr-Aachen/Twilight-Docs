@@ -28,19 +28,19 @@ project-root/
     export default defineConfig({
         integrations: [
             decapCmsOauth({
-                decapCMSVersion: "3.3.3",
+                decapCMSVersion: "3.9.0",
                 oauthDisabled: false,
             }),
         ],
     })
     ```
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers).
-2. Click **New OAuth App** and fill in:
+2. Click `New OAuth App` and fill in:
     - **Application name**: e.g. "Twilight Blog CMS"
     - **Homepage URL**: your-site-URL (e.g. "https://blog.spr-aachen.com")
     - **Authorization callback URL**: your-site-URL/oauth/callback (e.g. "https://blog.spr-aachen.com/oauth/callback")
-3. Click **Register application**.
-4. Generate a **Client Secret**.
+3. Click `Register application`.
+4. Generate a `Client Secret`.
 5. Create a local `.env` file with:
     ```env
     OAUTH_GITHUB_CLIENT_ID=your-github-client-id
@@ -86,6 +86,4 @@ backend:
 
 ### Getting Help
 
-- Review the [Decap CMS documentation](https://decapcms.org/docs/)
-- Check the [astro-decap-cms-oauth project](https://github.com/dorukgezici/astro-decap-cms-oauth)
-- Open an Issue in this repository for support
+Open an Issue in the project repository if you need assistance.

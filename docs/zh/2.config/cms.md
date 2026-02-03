@@ -19,7 +19,7 @@ permalink: /config/cms/
 ```
 
 
-## 
+## 配置步骤
 
 ### 1. 创建 GitHub OAuth 应用
 
@@ -28,7 +28,7 @@ permalink: /config/cms/
     export default defineConfig({
         integrations: [
             decapCmsOauth({
-                decapCMSVersion: "3.3.3",
+                decapCMSVersion: "3.9.0",
                 oauthDisabled: false, // Disable it to use oauth, requires .env configuration
             }),
     ],
@@ -90,7 +90,4 @@ backend:
 
 ### 获取帮助
 
-如果遇到问题，请：
-1. 查看 [Decap CMS 官方文档](https://decapcms.org/docs/)
-2. 检查 [astro-decap-cms-oauth 项目](https://github.com/dorukgezici/astro-decap-cms-oauth)
-3. 提交 Issue 到项目仓库
+如果遇到问题，请提交 Issue 到项目仓库
