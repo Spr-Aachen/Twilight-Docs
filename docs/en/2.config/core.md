@@ -251,7 +251,6 @@ navbar:
 Configure the display, sorting, animation, and responsive behavior of the website sidebar
 
 ```yaml
-# Sidebar configuration
 sidebar:
     # Sidebar component configuration list (sidebar component presets are located in WidgetComponentType in src/types/config.ts)
     components:
@@ -276,6 +275,8 @@ sidebar:
                 responsive:
                     # Collapse threshold
                     collapseThreshold: 5
+                # Depth
+                depth: 3
             - # Component - Post Tags (preset)
                 # Type
                 type: "tags"
@@ -292,15 +293,19 @@ sidebar:
                 type: "toc"
                 # Position strategy ("top" fixed at the top | "sticky" sticky)
                 position: "sticky"
-                # Custom properties
-                customProps:
-                    # TOC depth (1-6, 1 means only display h1 titles, 2 means display h1 and h2 titles, and so on)
-                    depth: 3
+                # Depth (1-6, 1 means only display h1 titles, 2 means display h1 and h2 titles, and so on)
+                depth: 3
             - # Component - Post Statistics (preset)
                 # Type
                 type: "statistics"
                 # Position strategy ("top" fixed at the top | "sticky" sticky)
                 position: "sticky"
+                # Visibility
+                visibility:
+                    # Matching mode ('include' | 'exclude')
+                    mode: "include"
+                    # Matching rule list (Supports regular expression strings)
+                    paths: ["^/$", "^/archive$"]
 ```
 
 

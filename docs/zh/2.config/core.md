@@ -251,7 +251,6 @@ navbar:
 配置网站侧边栏的显示、排序、动画和响应式行为
 
 ```yaml
-# 侧边栏配置
 sidebar:
     # 侧边栏组件配置列表 (侧栏组件预设位于 src/types/config.ts 的 WidgetComponentType)
     components:
@@ -276,6 +275,8 @@ sidebar:
                 responsive:
                     # 折叠阈值
                     collapseThreshold: 5
+                # 目录深度
+                depth: 3
             - # 组件 - 文章标签 (预设)
                 # 类型
                 type: "tags"
@@ -292,15 +293,19 @@ sidebar:
                 type: "toc"
                 # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
                 position: "sticky"
-                # 自定义属性
-                customProps:
-                    # 目录深度 (1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推)
-                    depth: 3
+                # 目录深度 (1-6，1 表示只显示 h1 标题，2 表示显示 h1 和 h2 标题，依此类推)
+                depth: 3
             - # 组件 - 文章统计 (预设)
                 # 类型
                 type: "statistics"
                 # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
                 position: "sticky"
+                # 页面可见性配置
+                visibility:
+                    # 匹配模式：'include' (包含), 'exclude' (排除)
+                    mode: "include"
+                    # 页面路径匹配规则列表 (支持正则字符串)
+                    paths: ["^/$", "^/archive$"]
 ```
 
 
