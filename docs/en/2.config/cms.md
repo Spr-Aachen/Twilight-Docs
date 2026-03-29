@@ -4,17 +4,41 @@ createTime: 2025/10/10 10:10:10
 permalink: /en/config/cms/
 ---
 
-Backend administration setup using Decap CMS.
+Admin panel configuration, supporting both Pages CMS and Decap CMS options.
+
+---
+
+# Pages CMS
 
 
 ## File Structure
 
 ```
 project-root/
-├── public/
-│   └── admin/
-│       └── config.yml        # Decap CMS configuration
+└── .pages.yml                # Pages CMS configuration
+```
+
+
+## Setup Steps
+
+### Deploy and Access
+
+1. Go to [app.pagescms.org](https://app.pagescms.org)
+2. Click `Install GitHub App`
+3. Click `Install`
+4. Select the repository you want to edit and click `Open` to access the CMS dashboard.
+
+---
+
+# Decap CMS
+
+
+## File Structure
+
+```
+project-root/
 ├── astro.config.mjs          # Includes Decap CMS integration
+├── .decap.yml                # Decap CMS configuration
 └── .env                      # Environment variables
 ```
 
@@ -23,15 +47,16 @@ project-root/
 
 ### 1. Create a GitHub OAuth App
 
-0. Edit `astro.config.mjs` and make sure `oauthDisabled` is `false`:
+0. Edit `astro.config.mjs` and make sure `enable` is `true`:
     ```javascript
     export default defineConfig({
         integrations: [
             decapCmsOauth({
+                configPath: "./.decap.yml", // Path to the Decap CMS configuration file
                 decapCMSVersion: "3.9.0",
-                oauthDisabled: false,
+                enable: true, // Set to true to use oauth (Requires .env configuration)
             }),
-        ],
+    ],
     })
     ```
 1. Go to [GitHub Developer Settings](https://github.com/settings/developers).
@@ -49,7 +74,7 @@ project-root/
 
 ### 2. Update the CMS Config
 
-Edit `public/admin/config.yml`:
+Edit `.decap.yml`:
 ```yaml
 backend:
     name: github
@@ -80,9 +105,6 @@ backend:
 3. **Content fails to save**
     - Verify GitHub repository permissions.
     - Confirm the branch name matches the config.
-4. **Dev server fails to start**
-    - Check for missing environment variables.
-    - Reinstall dependencies if needed.
 
 ### Getting Help
 

@@ -4,17 +4,41 @@ createTime: 2025/10/10 10:10:10
 permalink: /config/cms/
 ---
 
-后台管理系统配置
+后台管理系统配置，支持 Pages CMS 和 Decap CMS 两种方案。
+
+---
+
+# Pages CMS
 
 
 ## 文件结构
 
 ```
 项目根目录/
-├── public/
-│   └── admin/
-│       └── config.yml        # Decap CMS 配置文件
+└── .pages.yml               # Pages CMS 配置文件
+```
+
+
+## 配置步骤
+
+### 部署和访问
+
+1. 访问 [app.pagescms.org](https://app.pagescms.org)
+2. 点击 `Install GitHub App`
+3. 点击 `Install`
+4. 找到仓库并点击 `Open` 进入后台管理界面
+
+---
+
+# Decap CMS
+
+
+## 文件结构
+
+```
+项目根目录/
 ├── astro.config.mjs          # 包含 Decap CMS 集成
+├── .decap.yml                # Decap CMS 配置文件
 └── .env                      # 环境变量文件
 ```
 
@@ -23,13 +47,14 @@ permalink: /config/cms/
 
 ### 1. 创建 GitHub OAuth 应用
 
-0. 编辑 `astro.config.mjs` 文件，将`oauthDisabled`设置为`false`：
+0. 编辑 `astro.config.mjs` 文件，将`enable`设置为`true`：
     ```javascript
     export default defineConfig({
         integrations: [
             decapCmsOauth({
+                configPath: "./.decap.yml", // Path to the Decap CMS configuration file
                 decapCMSVersion: "3.9.0",
-                oauthDisabled: false, // Disable it to use oauth, requires .env configuration
+                enable: true, // Set to true to use oauth (Requires .env configuration)
             }),
     ],
     })
@@ -50,7 +75,7 @@ permalink: /config/cms/
 
 ### 2. 更新配置文件
 
-编辑 `public/admin/config.yml` 文件，更新以下配置：
+编辑 `.decap.yml` 文件，更新以下配置：
 ```yaml
 backend:
     name: github
@@ -83,10 +108,6 @@ backend:
 3. **内容保存失败**
     - 检查 GitHub 仓库权限
     - 确认分支名称配置正确
-
-4. **开发环境启动失败**
-    - 检查是否缺少必要的环境变量
-    - 确认所有依赖包已正确安装
 
 ### 获取帮助
 
