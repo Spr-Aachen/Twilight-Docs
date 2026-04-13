@@ -185,16 +185,30 @@ site:
 Configure website page view statistics
 
 ```yaml
-umami:
-    # Whether to show Umami statistics
-    enabled: false
-    # UmamiCloudAPI address
-    baseUrl: "https://api.umami.is"
-    # API key (can be overridden by environment variables)
-    apiKey: ""
-    # Script to insert (can be overridden by environment variables)
-    scripts: ""
+analytics:
+    # Whether to show analytics
+    enabled: true
+    # Analytics platform
+    platform: "umami"
+    # Umami config
+    umami:
+        # Umami API address
+        baseUrl: "https://api.umami.is"
+        # API key
+        apiKey: ''
+        # Tracking code
+        code: ''
 ```
+
+0. Open the [Umami dashboard](https://cloud.umami.is). If you do not have an account yet, [sign up first](https://umami.is).
+1. Click **Add website**.
+2. Fill in:
+    - **Name** – e.g. `Twilight Blog`
+    - **Domain** – your production domain
+3. Click **Save**.
+4. Press **Edit** to grab the **Tracking code**.
+5. Open **Settings → API Keys** and copy the **Key**.
+6. Import **Tracking code** and **Key** to `code` and `apikey`
 
 
 ## Navigation Bar Configuration

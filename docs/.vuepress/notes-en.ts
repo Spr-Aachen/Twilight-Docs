@@ -58,11 +58,6 @@ const NoteEN = defineNoteConfig({
                     icon: "ri:shield-user-line"
                 },
                 {
-                    text: "Analytics Config",
-                    link: "analytics/",
-                    icon: "ri:bar-chart-2-line"
-                },
-                {
                     text: 'Content Config',
                     link: 'content/',
                     icon: 'ri:numbers-line'

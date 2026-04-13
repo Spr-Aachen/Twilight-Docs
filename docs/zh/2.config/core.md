@@ -185,16 +185,30 @@ site:
 配置网站浏览量统计
 
 ```yaml
-umami:
-    # 是否显示Umami统计
-    enabled: false
-    # UmamiCloudAPI地址
-    baseUrl: "https://api.umami.is"
-    # API密钥 (可用环境变量覆盖)
-    apiKey: ""
-    # 要插入的Script (可用环境变量覆盖)
-    scripts: ""
+analytics:
+    # 是否启用统计
+    enabled: true
+    # 统计平台
+    platform: "umami"
+    # Umami 统计配置
+    umami:
+        # Umami API 地址
+        baseUrl: "https://api.umami.is"
+        # API 密钥
+        apiKey: ''
+        # Tracking code
+        code: ''
 ```
+
+0. 访问 [Umami 仪表板](https://cloud.umami.is)（如果没有账号请先[去注册](https://umami.is)）
+1. 点击 `Add website`
+2. 填写以下信息：
+    - **Name**: 名称（如：Twilight Blog）
+    - **Domain**: 您的域名
+3. 点击 `Save`
+4. 点击 `Edit`, 获取 **Tracking code**
+5. 点击 `Settings`，找到 `API Keys`，获取 **Key**
+6. 将 **Tracking code** 和 **Key** 填写到 `code` 与 `apikey`
 
 
 ## 导航栏配置
