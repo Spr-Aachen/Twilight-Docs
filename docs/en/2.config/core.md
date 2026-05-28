@@ -270,16 +270,11 @@ sidebar:
     components:
         # Left sidebar
         left:
-            - # Component - Profile (preset)
+            - # Component - Directory (preset)
                 # Type
-                type: "profile"
+                type: "directory"
                 # Position strategy ("top" fixed at the top | "sticky" sticky)
-                position: "top"
-            - # Component - Announcement (preset)
-                # Type
-                type: "announcement"
-                # Position strategy ("top" fixed at the top | "sticky" sticky)
-                position: "top"
+                position: "sticky"
             - # Component - Post Categories (preset)
                 # Type
                 type: "categories"
@@ -302,6 +297,16 @@ sidebar:
                     collapseThreshold: 20
         # Right sidebar
         right:
+            - # Component - Profile (preset)
+                # Type
+                type: "profile"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "top"
+            - # Component - Announcement (preset)
+                # Type
+                type: "announcement"
+                # Position strategy ("top" fixed at the top | "sticky" sticky)
+                position: "top"
             - # Component - Post TOC (preset)
                 # Type
                 type: "toc"
@@ -378,6 +383,18 @@ Configure post display, editing, TOC, and other features.
 
 ```yaml
 post:
+    # Post card configuration
+    card:
+        # Cover
+        cover:
+            # Position ("left" | "right")
+            side: "left"
+            # Cover width
+            width: "33%"
+            # Show text on cover (title, tags, excerpt)
+            showContent: true
+        # Title size (Tailwind text size class, e.g. "text-3xl")
+        titleSize: "text-2xl"
     # Show "Last Modified" card
     showLastModified: true
     # Show cover in post content

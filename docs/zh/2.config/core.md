@@ -270,16 +270,11 @@ sidebar:
     components:
         # 左侧侧边栏
         left:
-            - # 组件 - 资料 (预设)
+            - # 组件 - 目录 (预设)
                 # 类型
-                type: "profile"
+                type: "directory"
                 # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
-                position: "top"
-            - # 组件 - 公告 (预设)
-                # 类型
-                type: "announcement"
-                # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
-                position: "top"
+                position: "sticky"
             - # 组件 - 文章类别 (预设)
                 # 类型
                 type: "categories"
@@ -302,6 +297,28 @@ sidebar:
                     collapseThreshold: 20
         # 右侧侧边栏
         right:
+            - # 组件 - 资料 (预设)
+                # 类型
+                type: "profile"
+                # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
+                position: "top"
+                # 页面可见性配置
+                visibility:
+                    # 匹配模式：'include' (包含), 'exclude' (排除)
+                    mode: "exclude"
+                    # 页面路径匹配规则列表 (支持正则字符串)
+                    paths: ["^/posts/", "^/archive"]
+            - # 组件 - 公告 (预设)
+                # 类型
+                type: "announcement"
+                # 位置策略 ("top" 顶部固定 | "sticky" 粘性)
+                position: "top"
+                # 页面可见性配置
+                visibility:
+                    # 匹配模式：'include' (包含), 'exclude' (排除)
+                    mode: "include"
+                    # 页面路径匹配规则列表 (支持正则字符串)
+                    paths: ["^/$"]
             - # 组件 - 文章目录 (预设)
                 # 类型
                 type: "toc"
@@ -378,7 +395,19 @@ announcement:
 
 ```yaml
 post:
-    # 显示“上次编辑”卡片
+    # 文章卡片配置
+    card:
+        # 封面
+        cover:
+            # 位置 ("left" | "right")
+            side: "left"
+            # 封面宽度
+            width: "33%"
+            # 封面上是否显示文字 (标题、标签、摘要)
+            showContent: true
+        # 标题大小 (Tailwind 文本大小类，例如 "text-3xl")
+        titleSize: "text-2xl"
+    # 显示"上次编辑"卡片
     showLastModified: true
     # 在文章内容中显示封面
     showCoverInContent: false
