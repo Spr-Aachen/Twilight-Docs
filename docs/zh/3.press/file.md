@@ -30,7 +30,6 @@ date: 2025-01-20
 image:
   url: 'https://example.com/image.jpg'
   alt: '图片描述'
-pubDate: 2025-01-20
 ---
 ```
 
@@ -45,7 +44,6 @@ frontmatter支持的字段包括：
 
 ### 发布相关
 - `published`：文章发布日期，格式为YYYY-MM-DD
-- `pubDate`：文章发布日期（与published类似）
 - `date`：文章创建日期
 - `draft`：是否为草稿，true表示草稿，false表示正式发布
 
@@ -91,7 +89,6 @@ frontmatter支持的字段包括：
 ```yaml
 published: 2025-01-20
 date: 2025-01-20
-pubDate: 2025-01-20
 ```
 
 ### 标签和分类
@@ -133,7 +130,6 @@ date: 2025-01-20
 image:
   url: 'https://example.com/vue3-cover.jpg'
   alt: 'Vue.js 3 组合式API指南封面'
-pubDate: 2025-01-20
 ---
 
 

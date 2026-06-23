@@ -29,7 +29,6 @@ date: 2025-01-20
 image:
   url: 'https://example.com/image.jpg'
   alt: 'Cover image description'
-pubDate: 2025-01-20
 ---
 ```
 
@@ -45,7 +44,6 @@ Supported fields include:
 
 ### Publishing
 - `published`: Publication date (YYYY-MM-DD).
-- `pubDate`: Publication date used by feeds (mirrors `published`).
 - `date`: Created timestamp.
 - `draft`: Set to `true` to hide the post in production.
 
@@ -88,7 +86,6 @@ Use ISO 8601 (YYYY-MM-DD):
 ```yaml
 published: 2025-01-20
 date: 2025-01-20
-pubDate: 2025-01-20
 ```
 
 ### Tags & Categories
@@ -132,7 +129,6 @@ date: 2025-01-20
 image:
   url: 'https://example.com/vue3-cover.jpg'
   alt: 'Vue.js 3 Composition API cover'
-pubDate: 2025-01-20
 ---
 
 # Vue.js 3 Composition API Guide
