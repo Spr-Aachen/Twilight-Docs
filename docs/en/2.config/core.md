@@ -178,6 +178,10 @@ site:
     - `defaultTheme`: Black and white theme, with three options: `system` follows system, `light` light mode, `dark` dark mode
 - `wallpaper`: Wallpaper settings
     - `mode`: Default wallpaper mode, supports three modes: fullscreen (full screen wallpaper), banner (banner wallpaper), none (solid color background)
+- `favicon`: Favicon configuration, an array where each element contains the following fields:
+    - `src`: Favicon file path (relative to `/public` directory)
+    - `theme`: Optional, adapted theme (`"light"` light theme | `"dark"` dark theme)
+    - `sizes`: Optional, icon size (e.g. `"96x96"`)
 
 
 ## Site Statistics Configuration

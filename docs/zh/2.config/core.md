@@ -178,6 +178,10 @@ site:
     - `defaultTheme`: 黑白主题，有 `system` 跟随系统、`light` 浅色、`dark` 深色三个选项
 - `wallpaper`: 壁纸设置
     - `mode`: 壁纸默认模式，支持 fullscreen（全屏壁纸）、banner（横幅壁纸）、none（纯色背景）三种模式
+- `favicon`: Favicon 配置，一个数组，每个元素包含以下字段：
+    - `src`: Favicon 文件路径（相对于 `/public` 目录）
+    - `theme`: 可选，适配的主题（`"light"` 浅色主题 | `"dark"` 深色主题）
+    - `sizes`: 可选，图标尺寸（如 `"96x96"`）
 
 
 ## 站点统计配置
