@@ -409,6 +409,8 @@ post:
             width: "33%"
             # 封面上是否显示文字 (标题、标签、摘要)
             showContent: true
+            # 无指定封面时是否显示默认封面
+            showDefaultCover: false
         # 标题大小 (Tailwind 文本大小类，例如 "text-3xl")
         titleSize: "text-2xl"
     # 显示"上次编辑"卡片

@@ -397,6 +397,8 @@ post:
             width: "33%"
             # Show text on cover (title, tags, excerpt)
             showContent: true
+            # Show default cover when no cover is specified
+            showDefaultCover: false
         # Title size (Tailwind text size class, e.g. "text-3xl")
         titleSize: "text-2xl"
     # Show "Last Modified" card
