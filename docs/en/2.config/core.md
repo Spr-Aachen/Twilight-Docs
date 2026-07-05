@@ -421,17 +421,25 @@ post:
     comment:
         # Enable comment feature
         enable: false
+        # Comment service provider (optional, auto-detects configured service if left empty)
+        provider:
+        # Waline comment system configuration
+        waline:
+            # Server URL
+            serverURL: ""
+            # Language
+            lang: ""
         # Twikoo comment system configuration
         twikoo:
             # Environment ID
-            envId: "https://twikoo.vercel.app"
+            envId: ""
             # Language
-            lang: "en"
+            lang: ""
 ```
 
 - License configuration controls the license display at the bottom of the post
 - Code block configuration controls the display style of code blocks, optional themes include: `github-dark`, `dracula`, `one-dark`, etc.
-- Comment system configuration controls the comment system at the bottom of the post, you need to create an environment on [Twikoo](https://twikoo.js.org/) and get the environment ID first
+- Comment system configuration controls the comment system at the bottom of the post. Currently supports **Waline** and **Twikoo**. You can explicitly set `provider` to `"waline"` or `"twikoo"`, or leave it empty to auto-detect based on which service is configured. To use Waline, deploy the server and set `serverURL`. To use Twikoo, deploy the server (e.g., on Vercel or Netlify) and set the deployed server URL as `envId`. See [Waline](https://waline.js.org/) and [Twikoo](https://twikoo.js.org/) for deployment guides.
 
 
 ## Enable Footer Feature

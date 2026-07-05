@@ -433,17 +433,25 @@ post:
     comment:
         # 启用评论功能
         enable: false
+        # 评论服务提供商（可选，不填则自动检测已配置的服务）
+        provider:
+        # Waline 评论系统配置
+        waline:
+            # 服务端地址
+            serverURL: ""
+            # 语言
+            lang: ""
         # Twikoo 评论系统配置
         twikoo:
             # 环境 ID
-            envId: "https://twikoo.vercel.app"
+            envId: ""
             # 语言
-            lang: "en"
+            lang: ""
 ```
 
 - 许可证配置控制文章底部的许可证显示
 - 代码块配置控制代码块的显示样式, 可选主题包括：`github-dark`、`dracula`、`one-dark` 等
-- 评论系统配置控制文章底部的评论系统，需要先在 [Twikoo](https://twikoo.js.org/) 上创建环境并获取环境 ID
+- 评论系统配置控制文章底部的评论系统。目前支持 **Waline** 和 **Twikoo** 两种评论系统。可通过 `provider` 显式指定为 `"waline"` 或 `"twikoo"`，留空则根据已配置的服务自动检测。使用 Waline 需部署服务端并设置 `serverURL`；使用 Twikoo 需自行部署服务端（如 Vercel 或 Netlify），并将部署后的服务端地址填入 `envId`。部署指南请参考 [Waline](https://waline.js.org/) 和 [Twikoo](https://twikoo.js.org/) 官方文档。
 
 
 ## 启用页脚功能
