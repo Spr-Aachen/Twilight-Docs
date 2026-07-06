@@ -17,7 +17,9 @@ permalink: /press/file/
 ```markdown
 ---
 title: Markdown Tutorial
+directoryTitle: MD 教程  # 侧栏目录中显示的自定义名称（可选）
 published: 2025-01-20
+updated: 2025-01-20     # 更新日期（可选）
 pinned: true
 description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging]
@@ -26,10 +28,7 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/image.jpg'
-  alt: '图片描述'
+cover: 'https://example.com/image.jpg'
 ---
 ```
 
@@ -44,10 +43,11 @@ frontmatter支持的字段包括：
 
 ### 发布相关
 - `published`：文章发布日期，格式为YYYY-MM-DD
-- `date`：文章创建日期
+- `updated`：更新日期（可选）
 - `draft`：是否为草稿，true表示草稿，false表示正式发布
 
 ### 内容分类
+- `directoryTitle`：侧栏目录树中显示的自定义名称（不设置则回退为文章标题）
 - `tags`：文章标签数组，用于标记文章主题
 - `category`：文章分类，用于组织文章
 - `pinned`：是否置顶文章，true表示置顶
@@ -57,10 +57,8 @@ frontmatter支持的字段包括：
 - `licenseName`：文章许可证名称，如"MIT"、"CC BY 4.0"等
 - `sourceLink`：文章源链接，通常指向GitHub仓库或原始来源
 
-### 图片设置
-- `image`：文章封面图片(单文件方案会导致RSS无法正常构建图片的路径,如果你需要使用rss功能请使用文件夹写作方案)
-  - `url`：图片URL地址
-  - `alt`：图片替代文本
+### 封面设置
+- `cover`：文章封面图片 URL
 
 3. 在frontmatter下方编写文章内容，可以使用标准的Markdown语法。
 
@@ -88,7 +86,7 @@ frontmatter支持的字段包括：
 建议使用ISO 8601格式（YYYY-MM-DD）来设置日期：
 ```yaml
 published: 2025-01-20
-date: 2025-01-20
+updated: 2025-01-20
 ```
 
 ### 标签和分类
@@ -117,6 +115,7 @@ category: Web Development
 ```markdown
 ---
 title: "Vue.js 3 组合式API完全指南"
+directoryTitle: "Vue 3 组合式API"
 published: 2025-01-20
 pinned: false
 description: "深入了解Vue.js 3的组合式API，包括setup函数、响应式系统和生命周期钩子。"
@@ -126,10 +125,7 @@ licenseName: "CC BY 4.0"
 author: "张三"
 sourceLink: "https://github.com/zhangsan/vue3-guide"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/vue3-cover.jpg'
-  alt: 'Vue.js 3 组合式API指南封面'
+cover: 'https://example.com/vue3-cover.jpg'
 ---
 
 

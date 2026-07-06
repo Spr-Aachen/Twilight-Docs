@@ -16,7 +16,9 @@ One of the two ways to author posts in the Twilight blog system. This approach i
 ```markdown
 ---
 title: Markdown Tutorial
+directoryTitle: MD Tutorial  # Custom name in sidebar directory (optional)
 published: 2025-01-20
+updated: 2025-01-20     # Update date (optional)
 pinned: true
 description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging]
@@ -25,10 +27,7 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/image.jpg'
-  alt: 'Cover image description'
+cover: 'https://example.com/image.jpg'
 ---
 ```
 
@@ -44,10 +43,11 @@ Supported fields include:
 
 ### Publishing
 - `published`: Publication date (YYYY-MM-DD).
-- `date`: Created timestamp.
+- `updated`: Update date (optional).
 - `draft`: Set to `true` to hide the post in production.
 
 ### Taxonomy & Positioning
+- `directoryTitle`: Custom name displayed in the sidebar directory tree (falls back to `title` if not set).
 - `tags`: Array of tags describing the topic.
 - `category`: Broad classification for the post.
 - `pinned`: When `true`, pin the article to the top of lists.
@@ -57,10 +57,8 @@ Supported fields include:
 - `licenseName`: License identifier, e.g. `MIT`, `CC BY 4.0`.
 - `sourceLink`: Link to the original source or repository.
 
-### Images
-- `image`: Cover image configuration. (Remember RSS cannot resolve local paths in single-file mode.)
-  - `url`: Image URL.
-  - `alt`: Alternative text.
+### Cover
+- `cover`: Post cover image URL.
 
 ## Markdown Learning Resources
 
@@ -85,7 +83,7 @@ Use ISO 8601 (YYYY-MM-DD):
 
 ```yaml
 published: 2025-01-20
-date: 2025-01-20
+updated: 2025-01-20
 ```
 
 ### Tags & Categories
@@ -116,6 +114,7 @@ Common values include:
 ```markdown
 ---
 title: "Vue.js 3 Composition API Guide"
+directoryTitle: "Vue 3 Comp. API Guide"
 published: 2025-01-20
 pinned: false
 description: "Deep dive into Vue 3's Composition API, covering setup, reactivity, and lifecycle hooks."
@@ -125,10 +124,7 @@ licenseName: "CC BY 4.0"
 author: "Jane Doe"
 sourceLink: "https://github.com/janedoe/vue3-guide"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/vue3-cover.jpg'
-  alt: 'Vue.js 3 Composition API cover'
+cover: 'https://example.com/vue3-cover.jpg'
 ---
 
 # Vue.js 3 Composition API Guide

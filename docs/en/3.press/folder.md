@@ -15,7 +15,9 @@ The recommended approach for authoring posts that include many images or support
 ```markdown
 ---
 title: Markdown Tutorial
+directoryTitle: MD Tutorial  # Custom name in sidebar directory (optional)
 published: 2025-01-20
+updated: 2025-01-20     # Update date (optional)
 pinned: true
 description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging]
@@ -24,11 +26,7 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-date: 2025-01-20
-image:
-  url: './cover.jpg'
-  alt: 'Cover image'
-pubDate: 2025-01-20
+cover: './cover.jpg'
 ---
 ```
 
@@ -45,11 +43,11 @@ Supported fields mirror the single-file workflow:
 
 ### Publishing
 - `published`
-- `pubDate`
-- `date`
+- `updated`
 - `draft`
 
 ### Taxonomy & Positioning
+- `directoryTitle`: Custom name in sidebar directory tree (falls back to `title`).
 - `tags`
 - `category`
 - `pinned`
@@ -59,10 +57,8 @@ Supported fields mirror the single-file workflow:
 - `licenseName`
 - `sourceLink`
 
-### Images
-- `image` (recommended to use relative paths like `./cover.jpg`)
-  - `url`
-  - `alt`
+### Cover
+- `cover`: Post cover image URL (recommended to use relative paths like `./cover.jpg`).
 
 
 ## Markdown Learning Resources
@@ -84,8 +80,7 @@ Covers:
 
 ```yaml
 published: 2025-01-20
-date: 2025-01-20
-pubDate: 2025-01-20
+updated: 2025-01-20
 ```
 
 ### Tags & Categories
@@ -104,14 +99,12 @@ category: Web Development
 
 Common values: `MIT`, `Apache-2.0`, `CC BY 4.0`, `CC BY-SA 4.0`, `Unlicensed`.
 
-### Image Paths
+### Cover Paths
 
 Use relative paths to keep assets with the article:
 
 ```yaml
-image:
-  url: './cover.jpg'
-  alt: 'Cover illustration'
+cover: './cover.jpg'
 ```
 
 ### Full Example
@@ -119,6 +112,7 @@ image:
 ```markdown
 ---
 title: "React Hooks Deep Dive"
+directoryTitle: "React Hooks"
 published: 2025-01-20
 pinned: true
 description: "Comprehensive guide to React Hooks with detailed explanations and visuals."
@@ -128,11 +122,7 @@ licenseName: "MIT"
 author: "Chris Lee"
 sourceLink: "https://github.com/chris/react-hooks-guide"
 draft: false
-date: 2025-01-20
-image:
-  url: './react-hooks-cover.png'
-  alt: 'React Hooks cover'
-pubDate: 2025-01-20
+cover: './react-hooks-cover.png'
 ---
 
 

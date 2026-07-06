@@ -18,7 +18,9 @@ permalink: /press/folder/
 ```markdown
 ---
 title: Markdown Tutorial
+directoryTitle: MD 教程  # 侧栏目录中显示的自定义名称（可选）
 published: 2025-01-20
+updated: 2025-01-20     # 更新日期（可选）
 pinned: true
 description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging]
@@ -27,11 +29,7 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-date: 2025-01-20
-image:
-  url: './cover.jpg'
-  alt: '文章封面'
-pubDate: 2025-01-20
+cover: './cover.jpg'
 ---
 ```
 
@@ -46,11 +44,11 @@ frontmatter支持的字段包括：
 
 ### 发布相关
 - `published`：文章发布日期，格式为YYYY-MM-DD
-- `pubDate`：文章发布日期（与published类似）
-- `date`：文章创建日期
+- `updated`：更新日期（可选）
 - `draft`：是否为草稿，true表示草稿，false表示正式发布
 
 ### 内容分类
+- `directoryTitle`：侧栏目录树中显示的自定义名称（不设置则回退为文章标题）
 - `tags`：文章标签数组，用于标记文章主题
 - `category`：文章分类，用于组织文章
 - `pinned`：是否置顶文章，true表示置顶
@@ -60,10 +58,8 @@ frontmatter支持的字段包括：
 - `licenseName`：文章许可证名称，如"MIT"、"CC BY 4.0"等
 - `sourceLink`：文章源链接，通常指向GitHub仓库或原始来源
 
-### 图片设置
-- `image`：文章封面图片
-  - `url`：图片URL地址（可以是相对路径如'./cover.jpg'）
-  - `alt`：图片替代文本
+### 封面设置
+- `cover`：文章封面图片 URL（可使用相对路径如 `'./cover.jpg'`）
 
 4. 在frontmatter下方编写文章内容，可以使用标准的Markdown语法。
 
@@ -91,8 +87,7 @@ frontmatter支持的字段包括：
 建议使用ISO 8601格式（YYYY-MM-DD）来设置日期：
 ```yaml
 published: 2025-01-20
-date: 2025-01-20
-pubDate: 2025-01-20
+updated: 2025-01-20
 ```
 
 ### 标签和分类
@@ -117,18 +112,17 @@ category: Web Development
 - "CC BY-SA 4.0"
 - "Unlicensed"
 
-### 图片路径最佳实践
-在子文件夹方法中，推荐使用相对路径引用图片：
+### 封面路径最佳实践
+在子文件夹方法中，推荐使用相对路径引用封面：
 ```yaml
-image:
-  url: './cover.jpg'  # 相对于当前文件夹
-  alt: '文章封面图片描述'
+cover: './cover.jpg'
 ```
 
 ### 完整示例
 ```markdown
 ---
 title: "React Hooks深度解析"
+directoryTitle: "React Hooks"
 published: 2025-01-20
 pinned: true
 description: "全面解析React Hooks的使用方法和最佳实践，包含大量代码示例和图片说明。"
@@ -138,11 +132,7 @@ licenseName: "MIT"
 author: "李四"
 sourceLink: "https://github.com/lisi/react-hooks-guide"
 draft: false
-date: 2025-01-20
-image:
-  url: './react-hooks-cover.png'
-  alt: 'React Hooks深度解析封面'
-pubDate: 2025-01-20
+cover: './react-hooks-cover.png'
 ---
 
 
