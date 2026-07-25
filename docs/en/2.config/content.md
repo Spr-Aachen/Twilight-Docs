@@ -36,13 +36,14 @@ Each post must start with a Frontmatter configuration:
 ```yaml
 ---
 title: Post Title
-published: 2025-01-15    # Publication date
-updated: 2025-01-15      # Update date (optional)
+directoryTitle: Directory Name  # Custom name shown in sidebar directory (optional)
+published: 2025-01-15          # Publication date
+updated: 2025-01-15            # Update date (optional)
 description: Post description for list pages
-image: /path/to/image    # Post cover image (optional)
-tags: [Tag1, Tag2]      # Tags
-category: CategoryName   # Category
-draft: false             # Whether it's a draft
+cover: /path/to/image    # Post cover image (optional)
+tags: [Tag1, Tag2]            # Tags
+category: CategoryName         # Category
+draft: false                   # Whether it's a draft
 ---
 ```
 

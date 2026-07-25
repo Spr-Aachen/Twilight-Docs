@@ -36,10 +36,11 @@ permalink: /config/content/
 ```yaml
 ---
 title: 文章标题
+directoryTitle: 目录名称  # 侧栏目录中显示的自定义名称（可选）
 published: 2025-01-15    # 发布日期
 updated: 2025-01-15      # 更新日期（可选）
 description: 文章描述     # 显示在列表页的摘要
-image: /path/to/image    # 文章封面图（可选）
+cover: /path/to/image    # 文章封面图（可选）
 tags: [Tag1, Tag2]      # 标签
 category: CategoryName   # 分类
 draft: false             # 是否为草稿

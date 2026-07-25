@@ -8,6 +8,7 @@ One of the two ways to author posts in the Twilight blog system. This approach i
 
 > ⚠️ Using the single-file workflow prevents RSS from resolving local image paths correctly. If your posts rely on RSS with local media, choose the folder-based workflow instead. (Remote image hosts are fine.)
 
+
 ## Create a Post
 
 1. Inside `src/content/posts`, create a new Markdown file with a descriptive name, for example `my-first-post.md`.
@@ -16,7 +17,9 @@ One of the two ways to author posts in the Twilight blog system. This approach i
 ```markdown
 ---
 title: Markdown Tutorial
+directoryTitle: MD Tutorial  # Custom name in sidebar directory (optional)
 published: 2025-01-20
+updated: 2025-01-20     # Update date (optional)
 pinned: true
 description: A simple example of a Markdown blog post.
 tags: [Markdown, Blogging]
@@ -25,14 +28,17 @@ licenseName: "Unlicensed"
 author: emn178
 sourceLink: "https://github.com/emn178/markdown"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/image.jpg'
-  alt: 'Cover image description'
+cover: 'https://example.com/image.jpg'
+copyProtection:
+    blockSelection: true
+    blockClipboard: false
+    blockContextMenu: true
+    blockDevTools: false
 ---
 ```
 
 3. Write the article content beneath the frontmatter using standard Markdown syntax.
+
 
 ## Frontmatter Field Reference
 
@@ -44,10 +50,11 @@ Supported fields include:
 
 ### Publishing
 - `published`: Publication date (YYYY-MM-DD).
-- `date`: Created timestamp.
+- `updated`: Update date (optional).
 - `draft`: Set to `true` to hide the post in production.
 
 ### Taxonomy & Positioning
+- `directoryTitle`: Custom name displayed in the sidebar directory tree (falls back to `title` if not set).
 - `tags`: Array of tags describing the topic.
 - `category`: Broad classification for the post.
 - `pinned`: When `true`, pin the article to the top of lists.
@@ -57,10 +64,16 @@ Supported fields include:
 - `licenseName`: License identifier, e.g. `MIT`, `CC BY 4.0`.
 - `sourceLink`: Link to the original source or repository.
 
-### Images
-- `image`: Cover image configuration. (Remember RSS cannot resolve local paths in single-file mode.)
-  - `url`: Image URL.
-  - `alt`: Alternative text.
+### Cover
+- `cover`: Post cover image URL.
+
+### Copy Protection
+- `copyProtection`: Object that enables granular page-level copy protection. Each sub-option defaults to `false`:
+  - `blockSelection`: Disable text selection (`user-select: none`).
+  - `blockClipboard`: Block `copy`, `cut`, and `paste` events.
+  - `blockContextMenu`: Block the right-click context menu.
+  - `blockDevTools`: Block `F12`, `Ctrl+U` (view source), and `Ctrl+S` (save page).
+
 
 ## Markdown Learning Resources
 
@@ -78,6 +91,7 @@ This guide covers:
 
 Master the fundamentals and you will be ready to craft polished articles.
 
+
 ## Frontmatter Best Practices
 
 ### Date Formats
@@ -85,7 +99,7 @@ Use ISO 8601 (YYYY-MM-DD):
 
 ```yaml
 published: 2025-01-20
-date: 2025-01-20
+updated: 2025-01-20
 ```
 
 ### Tags & Categories
@@ -111,11 +125,27 @@ Common values include:
 - `CC BY-SA 4.0`
 - `Unlicensed`
 
+
+### Copy Protection
+
+Enable the protections you need individually:
+
+```yaml
+copyProtection:
+    blockSelection: true
+    blockClipboard: true
+    blockContextMenu: true
+    blockDevTools: true
+```
+
+All sub-options default to `false`.
+
 ### Full Example
 
 ```markdown
 ---
 title: "Vue.js 3 Composition API Guide"
+directoryTitle: "Vue 3 Comp. API Guide"
 published: 2025-01-20
 pinned: false
 description: "Deep dive into Vue 3's Composition API, covering setup, reactivity, and lifecycle hooks."
@@ -125,10 +155,12 @@ licenseName: "CC BY 4.0"
 author: "Jane Doe"
 sourceLink: "https://github.com/janedoe/vue3-guide"
 draft: false
-date: 2025-01-20
-image:
-  url: 'https://example.com/vue3-cover.jpg'
-  alt: 'Vue.js 3 Composition API cover'
+cover: 'https://example.com/vue3-cover.jpg'
+copyProtection:
+    blockSelection: true
+    blockClipboard: false
+    blockContextMenu: true
+    blockDevTools: false
 ---
 
 # Vue.js 3 Composition API Guide
