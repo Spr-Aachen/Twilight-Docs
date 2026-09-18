@@ -145,6 +145,12 @@ site:
     loadingOverlay:
         # Whether to enable the loading page
         enable: true
+        # Whether to wait for fonts to finish loading
+        waitForFonts: true
+        # Whether to wait for above-the-fold images
+        waitForImages: true
+        # Maximum wait time (s)
+        maxWait: 5
         # Loading title configuration
         title:
             # Whether to enable the loading title

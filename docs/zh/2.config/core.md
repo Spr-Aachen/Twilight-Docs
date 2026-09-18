@@ -145,6 +145,12 @@ site:
     loadingOverlay:
         # 是否启用加载页
         enable: true
+        # 是否等待字体加载完成
+        waitForFonts: true
+        # 是否等待首屏图片 (如壁纸/头像) 解码完成
+        waitForImages: true
+        # 最长等待时间 (s)
+        maxWait: 5
         # 加载标题配置
         title:
             # 是否启用加载标题
