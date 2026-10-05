@@ -439,25 +439,25 @@ post:
     comment:
         # 启用评论功能
         enable: false
-        # 评论服务提供商（可选，不填则自动检测已配置的服务）
+        # 评论服务提供商 ("waline" | "twikoo") 不填则自动选择已配置的服务
         provider:
         # Waline 评论系统配置
         waline:
             # 服务端地址
             serverURL: ""
-            # 语言
+            # 语言 (留空则使用站点语言)
             lang: ""
         # Twikoo 评论系统配置
         twikoo:
             # 环境 ID
             envId: ""
-            # 语言
+            # 语言 (留空则使用站点语言)
             lang: ""
 ```
 
 - 许可证配置控制文章底部的许可证显示
 - 代码块配置控制代码块的显示样式, 可选主题包括：`github-dark`、`dracula`、`one-dark` 等
-- 评论系统配置控制文章底部的评论系统。目前支持 **Waline** 和 **Twikoo** 两种评论系统。可通过 `provider` 显式指定为 `"waline"` 或 `"twikoo"`，留空则根据已配置的服务自动检测。使用 Waline 需部署服务端并设置 `serverURL`；使用 Twikoo 需自行部署服务端（如 Vercel 或 Netlify），并将部署后的服务端地址填入 `envId`。部署指南请参考 [Waline](https://waline.js.org/) 和 [Twikoo](https://twikoo.js.org/) 官方文档。
+- 评论系统配置控制文章底部的评论系统。目前支持 **Waline** 和 **Twikoo** 两种评论系统。`provider` 可显式指定为 `"waline"` 或 `"twikoo"`，留空则按 Waline → Twikoo 的顺序自动选择第一个已配置的服务（判断依据为必填项是否填写：Waline 看 `serverURL`，Twikoo 看 `envId`，纯空格视为未填写）。若显式指定的 `provider` 未填写对应的必填项，构建时会报错。使用 Waline 需部署服务端并设置 `serverURL`；使用 Twikoo 需自行部署服务端（如 Vercel 或 Netlify），并将部署后的服务端地址填入 `envId`。两者可选的 `lang` 留空时回退为站点语言 `site.lang`。部署指南请参考 [Waline](https://waline.js.org/) 和 [Twikoo](https://twikoo.js.org/) 官方文档。
 
 
 ## 启用页脚功能

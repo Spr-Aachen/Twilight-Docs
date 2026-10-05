@@ -427,25 +427,25 @@ post:
     comment:
         # Enable comment feature
         enable: false
-        # Comment service provider (optional, auto-detects configured service if left empty)
+        # Comment service provider ("waline" | "twikoo"), auto-selects the configured service if left empty
         provider:
         # Waline comment system configuration
         waline:
             # Server URL
             serverURL: ""
-            # Language
+            # Language (leave empty to use the site language)
             lang: ""
         # Twikoo comment system configuration
         twikoo:
             # Environment ID
             envId: ""
-            # Language
+            # Language (leave empty to use the site language)
             lang: ""
 ```
 
 - License configuration controls the license display at the bottom of the post
 - Code block configuration controls the display style of code blocks, optional themes include: `github-dark`, `dracula`, `one-dark`, etc.
-- Comment system configuration controls the comment system at the bottom of the post. Currently supports **Waline** and **Twikoo**. You can explicitly set `provider` to `"waline"` or `"twikoo"`, or leave it empty to auto-detect based on which service is configured. To use Waline, deploy the server and set `serverURL`. To use Twikoo, deploy the server (e.g., on Vercel or Netlify) and set the deployed server URL as `envId`. See [Waline](https://waline.js.org/) and [Twikoo](https://twikoo.js.org/) for deployment guides.
+- Comment system configuration controls the comment system at the bottom of the post. Currently supports **Waline** and **Twikoo**. Set `provider` to `"waline"` or `"twikoo"` explicitly, or leave it empty to auto-select the first configured service in the order Waline → Twikoo. A service counts as configured when its required field is filled in — `serverURL` for Waline and `envId` for Twikoo — and whitespace-only values count as empty. If an explicit `provider` is set but its required field is missing, the build fails with an error. To use Waline, deploy the server and set `serverURL`. To use Twikoo, deploy the server (e.g., on Vercel or Netlify) and set the deployed server URL as `envId`. The optional `lang` of both providers falls back to the site language `site.lang` when left empty. See [Waline](https://waline.js.org/) and [Twikoo](https://twikoo.js.org/) for deployment guides.
 
 
 ## Enable Footer Feature
